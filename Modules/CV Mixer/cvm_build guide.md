@@ -11,6 +11,9 @@ This is an active module build, meaning it requires power and uses an Integrated
 *   **3D Printer** (Creality K1 Max)
 
 ### Bill Of Materials
+
+Note: we want 2 of these, so double it.
+
 *   **1x** **TL072** Dual Op-Amp (DIP-8 package).
 *   **1x** **DIP-8 Socket** (Optional but recommended to protect the IC).
 *   **4x** **Thonkiconn PJ-301M-12** (3.5mm Mono Jacks).

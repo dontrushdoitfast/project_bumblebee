@@ -1,7 +1,7 @@
-# Offset / Attenuverter Description and Requirements
+# Dual Offset / Attenuverter Description and Requirements
 
 ### Description
-The **Offset / Attenuverter** is a critical utility module for controlling Control Voltage (CV) signals. It performs two main functions:
+The **Dual Offset / Attenuverter** is a high-density utility module containing **two identical processing channels**. Each channel performs:
 1.  **Attenuversion**: Attenuates (reduces) and Inverts the incoming signal. A knob at 12 o'clock is 0V (silence). Clockwise adds the signal (up to 1x gain). Counter-clockwise subtracts/inverts the signal (up to -1x gain).
 2.  **Offset**: Adds a fixed DC voltage to the signal (e.g., shifting a -5V to +5V LFO to be 0V to +10V).
 
@@ -11,26 +11,30 @@ This functionality is essential for making modulation sources compatible with di
 1.  **Input**: Bipolar CV or Audio (typically +/- 5V or +/- 10V).
 2.  **Output**: The processed signal (Input * Gain) + Offset.
 3.  **Controls**:
-    *   **Attenuverter Knob**: Bipolar potentiometer (-1 to +1 gain).
-    *   **Offset Knob**: Bipolar potentiometer (typically +/- 5V or +/- 10V shift).
+    *   **2x Attenuverter Knobs**: Bipolar potentiometer (-1 to +1 gain).
+    *   **2x Offset Knobs**: Bipolar potentiometer (+/- 5V or 10V shift).
 4.  **Indicators**:
     *   Bipolar LED (Green = Positive, Red = Negative) to visualize the output.
 5.  **Interface**:
-    *   Input Jack.
-    *   Output Jack.
+    *   **2x Input Jacks**.
+    *   **2x Output Jacks**.
 
 ### Panel Layout / Interface
-*   **Width**: 4HP
+*   **Width**: 4HP (High Density) or 6HP (Comfortable). *Recommendation: 4HP.*
 *   **Controls**:
-    *   **Top**: Input Jack.
-    *   **Upper Mid**: Attenuverter Potentiometer (Center Detent preferred).
-    *   **Lower Mid**: Offset Potentiometer.
-    *   **Bottom**: Output Jack and Bipolar LED.
-*   **Layout Logic**: Signal flows down. Input -> Process -> Output.
+    *   **Channel A (Top)**:
+        *   Input Jack
+        *   Attenuverter Pot
+        *   Offset Pot
+        *   Output Jack
+    *   **Channel B (Bottom)**: 
+        *   (Identical Repeat)
+*   **Layout Logic**: Two vertical strips.
 
 ### Technical Specifications
 *   **Topology**: Op-Amp based analog computer.
-*   **Active Components**: TL072 or TL074 Op-Amps.
+*   **Active Components**: 1x **TL074** (Quad Op-Amp).
+    *   Each Channel uses 2 Op-Amps (1/2 of TL074).
     *   Stage 1: Input Buffer / Inverter.
     *   Stage 2: Summing Amplifier (Signal + Offset).
 *   **Impedance**: High input impedance (100k) to prevent loading source modules.

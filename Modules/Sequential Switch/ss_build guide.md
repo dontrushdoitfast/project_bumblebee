@@ -9,6 +9,8 @@ This module introduces **Active Electronics** (Integrated Circuits). You will wi
 *   **Breadboard** (Essential for logic validation).
 
 ### Bill Of Materials
+Note: we want 2 of these. So double the parts below.
+
 *   **ICs**:
     *   **1x** CD4017BE (Decade Counter).
     *   **1x** CD4051BE (8-Channel Analog Mux/Demux).

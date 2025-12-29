@@ -1,4 +1,4 @@
-# Offset / Attenuverter Build Guide
+# Dual Offset / Attenuverter Build Guide
 
 ### Overview
 This build creates a simple but useful op-amp circuit. It mixes an input signal with a fixed voltage (Offset) and allows you to scale that input signal positively or negatively (Attenuverter).
@@ -10,20 +10,23 @@ This build creates a simple but useful op-amp circuit. It mixes an input signal 
 *   **Wire Strippers**
 
 ### Bill Of Materials
-*   **1x** Stripboard.
-*   **1x** TL072 Dual Op-Amp (or TL074 Quad if building dual version).
-*   **1x** 8-pin IC Socket (for TL072).
-*   **2x** B100K Potentiometers (Linear). *Note: Center detent is nice for the Attenuverter but not essential.*
+**Note**: We want 2 of these, so double it.
+
+*   **1x** Stripboard (Large enough for TL074 layout).
+*   **1x** **TL074** Quad Op-Amp (DIP-14).
+*   **1x** **DIP-14 Socket**.
+*   **4x** B100K Potentiometers (Linear).
+*   **4x** Knobs (Davies 1900 Clone).
 *   **Jacks**:
-    *   **2x** PJ-301M-12 (3.5mm Eurorack Jacks).
-*   **Resistors (1/4W)**:
-    *   **3x** 100k (Input/Feedback resistors for Unit Gain).
-    *   **2x** 1k (Output protection and LED current limiting).
+    *   **4x** Thonkiconn PJ-301M-12.
+*   **Resistors (1/4W Metal Film)**:
+    *   **6x** 100k (3 per channel: Input buffer, Summer in, Feedback).
+    *   **4x** 1k (Output protection, LED current).
 *   **Capacitors**:
-    *   **2x** 100nF Ceramic (Power decoupling).
-    *   **2x** 10uF Electrolytic (Power filtering).
+    *   **2x** 100nF Ceramic.
+    *   **2x** 10uF Electrolytic.
 *   **Indicators**:
-    *   **1x** Bipolar LED (or two standard LEDs back-to-back).
+    *   **2x** Bipolar LEDs (One per channel).
 *   **Power**:
     *   **1x** 10-pin Eurorack Power Header.
 
@@ -45,7 +48,8 @@ This build creates a simple but useful op-amp circuit. It mixes an input signal 
 1.  Set up your breadboard with +/- 12V.
 2.  Place the TL072. Connect Power (Pin 8 = +12V, Pin 4 = -12V).
 3.  Build the Offset section first: One Op-amp configured as a voltage follower or summer for the pot wiper. Check it swings +/- 10V (approx).
-4.  Add the Input stage. Verify you can invert a signal (use an LFO or steady DC voltage to test).
+4.  Add the Input stage. Verify you can invert a signal.
+5.  **Repeat**: Build the second channel on the breadboard to verify the TL074 pinout (14 pins is busier than 8!).
 
 #### Phase 2: Stripboard Assembly
 1.  **Layout**: Plan your stripboard. Ensure the IC is centrally located.
