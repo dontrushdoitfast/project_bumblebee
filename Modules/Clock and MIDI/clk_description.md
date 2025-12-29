@@ -37,6 +37,8 @@ Instead of menu diving, you press a button to select a target (e.g., Output 2), 
 ### Technical Specifications
 *   **Core**: Raspberry Pi Pico (RP2040).
 *   **Output Voltage**: **+5V** Pulses (Buffered via CD4050/74HC245).
+    *   **Dividers**: **50% Duty Cycle** (Square Wave / Gate). High for first 50% of the period.
+    *   **Multipliers / Master**: **10ms Fixed Trigger**.
 *   **User Input**:
     *   **Potentiometers**: 3x (Master, Edit A, Edit B).
     *   **Buttons**: 2x Tactile (Select A, Select B).

@@ -34,13 +34,15 @@ def update_leds():
     #     leds_opt[i].value(1 if i == selected_opt else 0)
     pass
 
+
+# --- CLOCK ENGINE ---
+# Instantiate Core
+# (Assuming PINS['OUTS'] is correct: [2, 3, 4, 5])
+from lib.clock_core import ClockCore
+core = ClockCore(PINS['OUTS'])
+
 def main():
     global selected_chan, selected_opt
-    
-    # 1. Init Screen
-    # i2c = I2C(0, sda=Pin(0), scl=Pin(1), freq=400000)
-    # lcd = I2cLcd(i2c, 0x27, 4, 20)
-    # lcd.putstr("Bumblebee Clock\nReady...")
     
     print("Clock System Booting...")
     
@@ -48,6 +50,9 @@ def main():
     
     while True:
         now = time.ticks_ms()
+        
+        # --- CLOCK ENGINE (High Priority) ---
+        core.update() # Run the tick logic
         
         # --- UI LOOP (Every 50ms) ---
         if time.ticks_diff(now, last_ui_update) > 50:
@@ -67,10 +72,9 @@ def main():
                 
             # Check Knobs
             bpm = 30 + knob_master.range(270) # 30 to 300 BPM
+            core.set_bpm(bpm)
             # print(f"BPM: {bpm}")
 
-        # --- CLOCK ENGINE ---
-        # core.update() # Run the tick logic
 
 if __name__ == '__main__':
     main()

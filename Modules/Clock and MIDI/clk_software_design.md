@@ -44,7 +44,12 @@ We need a central dictionary or class to store the state of the system so the UI
 1.  **PPQN (Pulses Per Quarter Note)**: Internal resolution should be high (e.g., 96 PPQN) to handle Swing and Jitter smoothly.
 2.  **Swing Logic**:
     *   On even 16th notes, delay the trigger by `swing_amount` milliseconds.
-3.  **Euclidean Logic (Out 4)**:
+4.  **Pin Handling (Triggers vs Gates)**:
+    *   **Dividers (Gates)**: Output MUST be a 50% duty cycle square wave.
+        *   *Implementation*: Set Pin HIGH at the start of the period. Set Pin LOW when `ticks_elapsed > (period / 2)`.
+    *   **Multipliers/Master (Triggers)**: Output MUST be a fixed 10ms pulse.
+        *   *Implementation*: Set Pin HIGH, mark timestamp, set Pin LOW after 10ms.
+5.  **Euclidean Logic (Out 4)**:
     *   Use the standard algorithm: `(step_count * hits) // total_steps`.
     *   If the result changes integer value, fire a pulse.
 
