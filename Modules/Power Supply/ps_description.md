@@ -14,7 +14,8 @@ The design uses a **Linear** topology with L7812 (Positive) and L7912 (Negative)
     *   **Rear**: Standard 16-pin Eurorack bus board connection.
 
 ### Panel Layout / Interface
-*   **Width**: 4HP
+*   **Width**: 4HP (Dedicated Module)
+    *   *Design Choice*: A dedicated module provides a safe, panel-mounted entry point for AC power and visual confirmation of rail status (LEDs). This is superior to hidden bus board supplies for safety and debugging.
 *   **Controls**:
     *   **Top**: 2.1mm DC Barrel Jack (Center Pin technically irrelevant for AC, but standard fit).
     *   **Middle**: SPST Toggle Switch (Power On/Off).

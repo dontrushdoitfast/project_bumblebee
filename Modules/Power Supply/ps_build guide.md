@@ -42,7 +42,9 @@ This build uses a **Stripboard** (Veroboard) converting standard schematic logic
     *   L7912 keeps negative rail at exactly -12V.
 
 **Stripboard Layout Concept**:
-*(User to find a standard "Dual Half Wave PSU Stripboard" layout. Verified common layouts include 'Frequency Central's Dual Microbus' or similar generic DIY designs.)*
+**Stripboard Layout**:
+![Stripboard Layout](images/psu_layout.png)
+*Follow this layout carefully. Ensure cuts under the ICs are clean and complete.*
 
 ### Step By Step guide
 

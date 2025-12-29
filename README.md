@@ -68,6 +68,7 @@ The following modules are planned for Phase 1 which is the main effort. Phase 2 
 5.  Sequential switch
 6.  CV Mixer
 7.  Offset/Attenuverter
+8.  Simple 2-channel dirty delay
 
 Casing will be entirely 3d printed.
 
