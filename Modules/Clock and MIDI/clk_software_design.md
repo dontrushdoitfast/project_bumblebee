@@ -10,6 +10,9 @@ This document outlines the MicroPython architecture for the **Smart Lab Clock**.
 ├── lib/
 │   ├── lcd_api.py     # Library for 2004 LCD
 │   ├── i2c_lcd.py     # I2C driver for LCD
+│   ├── europi.py      # COPY OF EUROPI LIBRARY (Subset)
+│   │   ├── Class Knob # Essential for smoothing ADC
+│   │   └── Class Button # Essential for debouncing
 │   ├── clock_core.py  # The timing engine (Class)
 │   └── ui.py          # Handling Buttons, Pots, and LEDs
 ```
@@ -48,8 +51,7 @@ We need a central dictionary or class to store the state of the system so the UI
 
 ### 3. User Interface (The "Modal" Workflow)
 **Button Handling**:
-*   Use Interrupts (IRQ) or Polling for buttons.
-*   **Debounce**: Critical. Ignore clicks for 50ms after a press.
+*   **Reuse EuroPi `Button` Class**: It handles debouncing (`debounce_delay`) and rising/falling edge interrupts perfectly.
 *   **Long Press (Reset)**:
     *   Monitor duration of "Option Button" press.
     *   If `duration > 3000ms`: Trigger `reset_options()` function.
@@ -57,6 +59,7 @@ We need a central dictionary or class to store the state of the system so the UI
 *   **Action**: Increment `selected_channel_index` or `selected_option_index` (on Short Press). Update LEDs immediately.
 
 **Potentiometer Handling ("Soft Takeover")**:
+*   **Reuse EuroPi `Knob` Class**: Use `.percent()` or `.range(steps)` to get clean values without jitter.
 *   *Problem*: If Output 2 is set to "Div 4", and you switch to Output 3 which is "Div 16", but the knob is physically at "Div 4", turning it might jump Out 3 suddenly.
 *   *Solution*: **Latch Mode**. The value doesn't update until the physical knob passes through the stored value.
     *   Implementation: Store `last_knob_val`. Compare `current_knob_val`. Only update `state` if they cross.
