@@ -28,45 +28,66 @@ This build features a "Modal" interface. You will be wiring up buttons and LEDs 
 
 ### Schematic / Wiring Logic
 
-#### 1. The Brain (Pico)
-*   **I2C Bus (Screen)**: GP0 (SDA), GP1 (SCL).
-*   **Common Controls**:
-    *   **Encoder**: GP10, GP11 (A/B), GP12 (Sw).
-    *   **Master Knob**: GP26 (ADC0).
-*   **Section A (Channels)**:
-    *   **Button**: GP16 (Pull Down).
-    *   **Knob**: GP27 (ADC1).
-    *   **LEDs**: GP13 (Out 2), GP14 (Out 3), GP15 (Out 4).
-*   **Section B (Options)**:
-    *   **Button**: GP17 (Pull Down).
-    *   **Knob**: GP28 (ADC2).
-    *   **LEDs**: GP22 (Swing), GP26 (Euclid), GP27 (Jitter) -> *Wait, ADC pins can't drive LEDs easily while reading pots?*
-    *   *Correction*: **ADC pins (GP26-28) are Analog INPUTS only.** We cannot use them for LEDs.
-    *   *Revised LED Mapping*:
-        *   **Option LEDs**: GP6, GP7, GP8.
+**Circuit Overview**:
+```
+   ┌─────────────────────────────────────────────────────────────────────────┐
+   │                          RASPBERRY PI PICO                              │
+   │                                                                         │
+   │  ┌──────────────┐   ┌──────────────────────────────────────────────┐   │
+   │  │   I2C LCD    │   │              GPIO MAPPING                    │   │
+   │  │   (2004)     │   │                                              │   │
+   │  │   GP0/GP1    │   │  ADC Inputs (Pots)         Digital Outputs   │   │
+   │  └──────────────┘   │  ├── GP26: Master Knob     ├── GP2-5: Clocks │   │
+   │                     │  ├── GP27: Chan Knob       ├── GP13-15: LEDs │   │
+   │  ┌──────────────┐   │  └── GP28: Opt Knob        └── GP6-8: LEDs   │   │
+   │  │   CLOCK IN   │   │                                              │   │
+   │  │   GP9 (Prot) │   │  Digital Inputs                              │   │
+   │  └──────────────┘   │  ├── GP9: Clock In (protected)               │   │
+   │                     │  ├── GP10-12: Encoder                        │   │
+   │  ┌──────────────┐   │  ├── GP16: Chan Button                       │   │
+   │  │   CD4050     │   │  └── GP17: Opt Button                        │   │
+   │  │   (Buffer)   │   └──────────────────────────────────────────────┘   │
+   │  │ 3.3V → 5V    │                                                       │
+   │  └──────────────┘                                                       │
+   └─────────────────────────────────────────────────────────────────────────┘
+             │
+             ▼
+   ┌──────────────────────────────────┐
+   │     CLOCK OUTPUTS (via buffer)   │
+   │   Out 1   Out 2   Out 3   Out 4  │
+   └──────────────────────────────────┘
+```
 
-#### 2. Wiring Summary (Revised)
-*   **Inputs (ADC)**:
-    *   Master Knob -> GP26
-    *   Chan Knob -> GP27
-    *   Opt Knob -> GP28
-*   **Inputs (Digital)**:
-    *   Chan Button -> GP16
-    *   Opt Button -> GP17
-    *   Encoder -> GP10, 11, 12.
-    *   **Clock In (Protected)**:
-        *   Jack Tip -> 1k Resistor -> Pico GP9.
-        *   *AND* Pico GP9 -> Cathode (Line) of 3.3V Zener -> Ground.
-        *   *Result*: If >3.3V enters, Zener dumps excess to ground. If <0V enters, Zener block/conducts based on type. *Ideally use BAT54S clamping for full protection, but Zener + Resistor is decent for 5V gates.*
-*   **Outputs (Digital)**:
-    *   **Clock Jacks** (via Buffer):
-        *   GP2 -> Out 1
-        *   GP3 -> Out 2
-        *   GP4 -> Out 3
-        *   GP5 -> Out 4
-    *   **LEDs**:
-        *   Chan LEDs: GP13, GP14, GP15
-        *   Opt LEDs: GP6, GP7, GP8
+#### GPIO Pin Assignment
+
+> **Note**: ADC pins (GP26-28) are analog inputs only and cannot drive LEDs. All LEDs use standard digital GPIOs.
+
+| Function | GPIO | Notes |
+|----------|------|-------|
+| **I2C (LCD)** | | |
+| SDA | GP0 | |
+| SCL | GP1 | |
+| **ADC (Knobs)** | | |
+| Master Knob | GP26 | ADC0 |
+| Channel Knob | GP27 | ADC1 |
+| Option Knob | GP28 | ADC2 |
+| **Digital Inputs** | | |
+| Clock In | GP9 | Protected: 1k + 3.3V Zener |
+| Channel Button | GP16 | PULL_DOWN |
+| Option Button | GP17 | PULL_DOWN |
+| Encoder A/B/Sw | GP10-12 | |
+| **Digital Outputs** | | |
+| Clock Out 1-4 | GP2-5 | Via CD4050 buffer |
+| Channel LEDs | GP13-15 | Out 2/3/4 indicators |
+| Option LEDs | GP6-8 | Swing/Euclid/Jitter |
+
+#### Input Protection (Clock In)
+```
+   [Jack Tip]──►[1k Resistor]──┬──►[GP9]
+                               │
+                               └──►[3.3V Zener]──►GND
+```
+Protects against over-voltage from 5V gates.
 
 ### Step By Step guide
 

@@ -1,5 +1,7 @@
 # Dual Offset / Attenuverter Description and Requirements
 
+**Difficulty: ⭐⭐ Easy** — *Uses TL074 Quad Op-Amp. Similar to CV Mixer build.*
+
 ### Description
 The **Dual Offset / Attenuverter** is a high-density utility module containing **two identical processing channels**. Each channel performs:
 1.  **Attenuversion**: Attenuates (reduces) and Inverts the incoming signal. A knob at 12 o'clock is 0V (silence). Clockwise adds the signal (up to 1x gain). Counter-clockwise subtracts/inverts the signal (up to -1x gain).

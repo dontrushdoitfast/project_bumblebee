@@ -33,6 +33,23 @@ The circuit has two stages using the two halves of the TL072:
 1.  **Stage 1 (Summing)**: Inputs are reduced by the pots, then go through 100k resistors to the *Inverting Input (-)* of Op-Amp A. The feedback resistor is also 100k, creating Unity Gain. The output is inverted (Negative).
 2.  **Stage 2 (Inverting)**: The output of Stage 1 goes to the *Inverting Input (-)* of Op-Amp B through a 100k resistor. Feedback is 100k. This re-inverts the signal, making it Positive (In Phase) again.
 
+**Circuit Diagram**:
+```
+                                    100k (Fb)
+                                  ┌───/\/\/───┐
+                                  │           │
+   [IN 1]──►[POT 1]──►100k──┬─────┤─  TL072A  ├───┐
+                            │     │     +     │   │
+   [IN 2]──►[POT 2]──►100k──┤     └───────────┘   │    100k (Fb)
+                            │                     │   ┌───/\/\/───┐
+   [IN 3]──►[POT 3]──►100k──┘                     │   │           │
+                                                  └───┤─  TL072B  ├──►[1k]──►[OUT]
+                                                      │     +     │
+                                                      └───────────┘
+                                                      
+   Power: Pin 8 = +12V, Pin 4 = -12V, Pin 3/5 = GND
+```
+
 **Power Connections**:
 *   TL072 Pin 8 -> +12V
 *   TL072 Pin 4 -> -12V

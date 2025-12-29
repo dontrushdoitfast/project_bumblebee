@@ -41,7 +41,23 @@ This build uses a **Stripboard** (Veroboard) converting standard schematic logic
     *   L7812 keeps positive rail at exactly +12V.
     *   L7912 keeps negative rail at exactly -12V.
 
-**Stripboard Layout Concept**:
+**Circuit Diagram**:
+```
+                          ┌────────────────┐
+   [AC JACK]──►[SWITCH]───┤                │
+                          │    D1 (1N4004) ├──►[C1 2200uF]──►┌─────────┐
+                          │        │       │                 │  L7812  ├──► +12V
+                          │       ─┴─      │                 │ IN  OUT │
+             ┌────────────┤                │                 └────┬────┘
+             │            │    D2 (1N4004) ├──►[C2 2200uF]──►┌────┴────┐
+             │            │        │       │   (reversed)    │  L7912  ├──► -12V
+             │            │       ─▼─      │                 │ IN  OUT │
+             │            └────────────────┘                 └────┬────┘
+             │                                                    │
+            GND ◄─────────────────────────────────────────────────┘
+                                  (Common Ground)
+```
+
 **Stripboard Layout**:
 ![Stripboard Layout](images/psu_layout.png)
 *Follow this layout carefully. Ensure cuts under the ICs are clean and complete.*

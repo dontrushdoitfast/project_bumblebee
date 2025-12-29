@@ -1,5 +1,7 @@
 # Power Supply Description and Requirements
 
+**Difficulty: ⭐⭐ Easy** — *Introduces rectification and voltage regulators. Requires careful polarity checks.*
+
 ### Description
 The **Power Supply** is the heart of the system. It takes AC power from an external "wall wart" transformer and converts it into the stable **+12V and -12V DC** rails required by Eurorack modules. 
 The design uses a **Linear** topology with L7812 (Positive) and L7912 (Negative) voltage regulators. While less efficient than switching supplies, linear supplies are preferred for analog audio because they generate very little noise/ripple.

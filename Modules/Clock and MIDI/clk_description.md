@@ -1,5 +1,7 @@
 # Clock Generator Description and Requirements
 
+**Difficulty: ⭐⭐⭐⭐ Advanced** — *Pico + LCD + Encoder + multiple I/O. Complex software.*
+
 ### Description
 The **Clock Generator** is a "Smart Lab" timing module. It uses a **Select + Edit** workflow to pack advanced functionality into a clean interface.
 Instead of menu diving, you press a button to select a target (e.g., Output 2), and an LED lights up to tell you *exactly* what the knob is currently controlling.

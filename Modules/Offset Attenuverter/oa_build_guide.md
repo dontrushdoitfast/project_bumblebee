@@ -34,13 +34,30 @@ This build creates a simple but useful op-amp circuit. It mixes an input signal 
 **Logic**:
 1.  **Stage 1 (Attenuverter)**:
     *   The input signal goes to a potentiometer.
-    *   The wiper of the pot feeds the Op-Amp logic to fade between Inverted and Non-Inverted signal. *Common design: "Crossfader" implementation.*
+    *   The wiper of the pot feeds the Op-Amp logic to fade between Inverted and Non-Inverted signal.
 2.  **Stage 2 (Offset & Summer)**:
     *   The "Offset" pot acts as a voltage divider between +12V and -12V.
     *   The output of Stage 1 and the Offset voltage are summed together in the second Op-Amp stage.
 3.  **Output**:
     *   The result is sent to the Output jack via a 1k protection resistor.
     *   An LED monitors the final voltage.
+
+**Circuit Diagram (Per Channel)**:
+```
+                    ATTENUVERTER                        OFFSET + SUMMER
+   ┌──────────────────────────────┐    ┌──────────────────────────────────────┐
+   │                              │    │                                      │
+   │  [IN]──►┌───────┐            │    │   +12V                               │
+   │         │  POT  │            │    │    │                                 │
+   │         │ (Att) ├──►[Op-Amp]─┼────┼───►├──►[Op-Amp Summer]──►[1k]──►[OUT]│
+   │         │       │   Inverter │    │    │      ▲                          │
+   │         └───────┘            │    │  [POT]    │                          │
+   │              ▲               │    │ (Offset)  │                          │
+   │       Crossfader             │    │    │      │                          │
+   │       wiring                 │    │   -12V    │                          │
+   └──────────────────────────────┘    └───────────┴──────────────────────────┘
+                                                 (Offset voltage added)
+```
 
 ### Step By Step guide
 

@@ -1,5 +1,7 @@
 # CV Mixer Description and Requirements
 
+**Difficulty: ⭐⭐ Easy** — *First Op-Amp project. Good introduction to active circuits.*
+
 ### Description
 The **CV Mixer** is a 3-channel active mixer designed to sum both audio and CV signals. Unlike a passive mixer, it uses an Op-Amp (TL072) to ensure signals are mixed without volume loss or crosstalk. It is DC-coupled, meaning it works equally well for mixing audio sources (like oscillators) or control voltages (like LFOs and Envelopes).
 

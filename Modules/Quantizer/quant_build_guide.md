@@ -28,18 +28,40 @@ This build guides you through creating a precision **Quantizer** using the Raspb
 
 ### Schematic / Wiring Logic
 
+**Circuit Overview**:
+```
+   ┌─────────────────────────────────────────────────────────────────────────┐
+   │                          RASPBERRY PI PICO                              │
+   │                                                                         │
+   │   ┌────────────────────────────────────────────────────────────────┐   │
+   │   │                    The "Piano" UI                              │   │
+   │   │   [C][C#][D][D#][E][F][F#][G][G#][A][A#][B]  ◄── 12 Buttons    │   │
+   │   │   (●)(●)(●)(●)(●)(●)(●)(●)(●)(●)(●)(●)      ◄── 12 NeoPixels  │   │
+   │   │                                                                │   │
+   │   │   Buttons: GP10-GP21                                           │   │
+   │   │   LEDs: GP22 (Data) → Daisy chain                              │   │
+   │   └────────────────────────────────────────────────────────────────┘   │
+   │                                                                         │
+   │   ┌────────────────┐              ┌────────────────┐                   │
+   │   │  CV IN A       │              │  CV OUT A      │                   │
+   │   │  (10V→3.3V)    │──►GP26       │  (DAC 0x60)    │◄── I2C (GP8/9)   │
+   │   └────────────────┘              └────────────────┘                   │
+   │   ┌────────────────┐              ┌────────────────┐                   │
+   │   │  CV IN B       │              │  CV OUT B      │                   │
+   │   │  (10V→3.3V)    │──►GP27       │  (DAC 0x61)    │◄── I2C (GP8/9)   │
+   │   └────────────────┘              └────────────────┘                   │
+   └─────────────────────────────────────────────────────────────────────────┘
+```
+
 #### 1. The Brain (Pico)
 *   **I2C Bus (DACs)**:
     *   GP8 (SDA) -> Connect to SDA on BOTH DACs.
     *   GP9 (SCL) -> Connect to SCL on BOTH DACs.
     *   VCC -> 3.3V (or 5V if using level shifters, usually 3.3V is fine for MCP4725).
 *   **The "Piano" (UI)**:
-    *   **Buttons (Input)**: Connect 12 buttons to 12 GPIOs. (e.g., GP10 - GP21).
+    *   **Buttons (Input)**: Connect 12 buttons to GP10-GP21.
     *   **LEDs (Output)**: GP22 -> Data In of First LED. (Daisy chain Data Out -> Data In).
-    *   **Physical Layout (CRITICAL)**: Do not place LEDs in a straight line.
-        *   Place each LED **directly above** its corresponding button.
-        *   Since "Black Key" buttons are offset higher than "White Key" buttons, their LEDs must also be offset higher.
-        *   *Wiring Order*: Daisy-chain them chromatically (C -> C# -> D...) by zig-zagging the data wire. This keeps the software array logic simple (`0=C`, `1=C#`).
+    *   **Physical Layout (CRITICAL)**: Place each LED directly above its button. Black keys offset higher.
 *   **Analog Inputs**:
     *   **CV In A** -> Scaled -> GP26 (ADC0).
     *   **CV In B** -> Scaled -> GP27 (ADC1).
@@ -48,22 +70,20 @@ This build guides you through creating a precision **Quantizer** using the Raspb
     *   Pico GND <- Common Ground.
 
 #### 2. Analog Front End (Dual Channel)
-*   **CV Input Scaling (Repeat twice)**:
-    *   **Divider**: Input -> 100k -> [Point A] -> 49.9k (or 47k+trim) -> GND.
-    *   **Buffer**: [Point A] -> TL072 Input (+).
-    *   **Output**: TL072 Output -> Pico ADC Pin.
-    *   *Goal*: 10V input = ~3.2V at ADC.
+```
+   [CV IN Jack]──►[100k]──┬──►[TL072 Follower]──►[Pico ADC]
+                          │
+                        [47k]
+                          │
+                         GND
+                         
+   Goal: 10V input = ~3.2V at ADC
+```
 
-#### 3. Wiring Summary
-*   **Panel PCB (Stripboard?)**:
-    *   Holds 12 Buttons + 12 PL9823 LEDs.
-    *   Connects to Main Board via ribbon cable (12 Button lines + 1 LED Data + 5V + GND).
-*   **Main Board**: Pico, Power, DACs, Op-Amps.
-
-#### 4. DAC Configuration
+#### 3. DAC Configuration
 *   **DAC 1**: Address 0x60 (Default). VOUT -> 1k Resistor -> Jack A Tip.
 *   **DAC 2**: Address 0x61 (Bridged A0). VOUT -> 1k Resistor -> Jack B Tip.
-*   *Note*: The 1k resistor is critical. It protects the DAC if you accidentally patch an Input signal into the Output jack.
+*   The 1k resistor protects the DAC if you accidentally patch an Input signal into the Output jack.
 
 ### Step By Step guide
 

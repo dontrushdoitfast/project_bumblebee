@@ -1,5 +1,7 @@
 # Sequential Switch Description and Requirements
 
+**Difficulty: ⭐⭐⭐ Intermediate** — *Introduces CMOS logic ICs and requires precise wiring.*
+
 ### Description
 The **Sequential Switch** is a 4-step bidirectional router. It can be used in two modes:
 1.  **Demultiplexer (1-to-4)**: Send one source (e.g., LFO) to 4 different destinations sequentially.

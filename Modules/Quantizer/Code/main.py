@@ -5,6 +5,7 @@ import neopixel
 from lib.mcp4725 import MCP4725
 from lib.scale_logic import ScaleLogic
 from lib.inputs import Inputs
+from lib.calibration import Calibration
 
 # --- CONFIGURATION ---
 PIN_SDA = 8
@@ -29,9 +30,10 @@ dac_b = MCP4725(i2c, address=0x61) # Second DAC with A0 bridged
 num_leds = 12
 led_strip = neopixel.NeoPixel(machine.Pin(PIN_LEDS), num_leds)
 
-# Init Logic
+# Init Logic & Calibration
 logic = ScaleLogic()
-inputs = Inputs(BTN_PINS, PIN_ADC_A, PIN_ADC_B)
+cal = Calibration()  # Loads from calibration.json
+inputs = Inputs(BTN_PINS, PIN_ADC_A, PIN_ADC_B, cal)
 
 # Colors
 COLOR_OFF = (0, 0, 0)
@@ -46,16 +48,6 @@ last_action_time = 0
 
 last_note_a = -1
 last_note_b = -1
-
-# Calibration: DAC Output
-# How many DAC units (0-4095) per Semitone?
-# 5V Range (approx). 1V/Octave.
-# Target: 1V change per 12 notes.
-# DAC units per Volt = ~4095 / 3.3 (if powered by 3.3).
-# Let's say roughly 68.25 units per semitone.
-DAC_UNITS_PER_SEMITONE = 68.25 
-# Note 24 (0V) -> DAC 0.
-# Note 36 (1V) -> DAC 819.
 
 print("Quantizer Ready.")
 
@@ -86,15 +78,11 @@ while True:
     # 3. Output Updates (DAC)
     # -----------------------
     if q_note_a != last_note_a:
-        # Map MIDI Note to DAC Value
-        # Formula: (Note - 24) * Scale. Clip to 0-4095.
-        val = int((q_note_a - 24) * DAC_UNITS_PER_SEMITONE)
-        dac_a.write(val)
+        dac_a.write(cal.note_to_dac(q_note_a))
         last_note_a = q_note_a
         
     if q_note_b != last_note_b:
-        val = int((q_note_b - 24) * DAC_UNITS_PER_SEMITONE)
-        dac_b.write(val)
+        dac_b.write(cal.note_to_dac(q_note_b))
         last_note_b = q_note_b
 
     # 4. LED Visualization

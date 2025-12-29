@@ -1,5 +1,7 @@
 # Quantizer Description and Requirements
 
+**Difficulty: ⭐⭐⭐⭐ Advanced** — *Pico + I2C DACs + LED strip + 12 buttons. Requires calibration.*
+
 ### Description
 The **Quantizer** module is a performance-oriented Dual Channel Pitch Quantizer. It uses a "Piano Keyboard" interface, allowing you to intuitively visualize and edit the selected scale. It features **2 channels** of quantization (processing two separate CV inputs) that share the same musical scale, perfect for keeping two oscillators in harmony.
 

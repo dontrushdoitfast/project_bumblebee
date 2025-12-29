@@ -1,6 +1,7 @@
 # Passive Attenuator Description and Requirements 
 
-### Description
+**Difficulty: ⭐ Beginner** — *No soldering iron skills needed beyond basic joints. No power required.*
+
 ### Description
 The **Passive Attenuator** is a dual-channel utility module used to reduce the amplitude of a signal. It is essential for taming hot CV signals or lowering audio levels. 
 **Usage**: 
@@ -28,5 +29,8 @@ The **Passive Attenuator** is a dual-channel utility module used to reduce the a
 *   **Potentiometer Used**: B50k or B100k Linear (9mm Alpha vertical or similar).
 *   **Voltage Range**: +/- 12V safe (or whatever the jacks can handle).
 *   **Channels**: 2 Independent Channels.
+
 ### Exclusions
-Things this module will not do.
+*   **Amplification**: Cannot boost signals above unity (1x).
+*   **Inversion**: Cannot invert signals (see Offset/Attenuverter for that).
+*   **CV Control**: No voltage control over attenuation amount.

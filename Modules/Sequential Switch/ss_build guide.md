@@ -25,26 +25,49 @@ Note: we want 2 of these. So double the parts below.
     *   **1x** 1N4148 Diode (Protection).
 
 ### Schematic / Wiring Diagram
-**Logic Details**:
-1.  **Clock Circuit**: Jack -> Transistor Buffer -> CD4017 CLK (Pin 14).
-2.  **Reset Logic**: CD4017 Reset (Pin 15) connected to **Step 5 Output (Pin 10)**. This forces it to reset to Step 1 immediately after Step 4, creating a 4-step loop.
-3.  **Address Translation**:
-    *   This is the tricky part. The 4017 outputs "One Hot" (individual pins go high). The 4051 expects "Binary" (A/B/C pins).
-    *   *Simplification*: Actually, for a pure 4-step, using a **CD4066** (Quad Switch) might be easier logic-wise, BUT the **CD4051** is better for audio.
-    *   *Correction*: To drive the 4051 Address pins (A, B) from the 4017, we need diode OR logic OR simply use the 4017 outputs to drive **CD4066** control pins.
-    *   **REVISED DESIGN**: For simplicity and robustness (the "Basic Electronics" goal), we will use **CD4017 outputs driving 4 sections of a CD4066**.
-    *   *Wait*: CD4066 clips audio on single supply. To pass +/- audio, CD4066 needs special biasing OR use the CD4051.
-    *   *Final Decision*: **Clock -> 2-bit Binary Counter (CD4520) -> CD4051 Address Pins**. This is cleaner.
-    *   *Alternative (Simpler)*: **CD4017 Output 0 -> drive LED & Switch Control??** No.
-    *   *Best for Beginner*: **CD4017 -> Diode Logic -> CD4051 Address Inputs**.
-        *   Step 0 (00): A=0, B=0
-        *   Step 1 (01): A=1, B=0
-        *   Step 2 (10): A=0, B=1
-        *   Step 3 (11): A=1, B=1
-        *   *Implementation*: Connect 4017 outputs to A/B lines via 1N4148 diodes.
 
-**Pinout Summary (CD4051)**:
-*   VEE (Pin 7): -12V (Critical for bi-polar audio!)
+**Circuit Diagram**:
+```
+   [CLOCK IN]                                              [COMMON I/O]
+       │                                                        │
+       ▼                                                        ▼
+   ┌───────────┐                               ┌────────────────────────────┐
+   │ Transistor│                               │         CD4051             │
+   │  Buffer   │                               │    (Analog Mux/Demux)      │
+   └─────┬─────┘                               │                            │
+         │                                     │ VDD(16)=+12V               │
+         ▼                                     │ VEE(7)=-12V  ◄─ CRITICAL!  │
+   ┌───────────────────┐                       │ VSS(8)=GND                 │
+   │      CD4017       │     Diode Logic       │                            │
+   │  (Decade Counter) ├─────────────────────► │ A(11), B(10) ◄─Address     │
+   │                   │     1N4148 x4         │                            │
+   │ CLK(14) ◄─────────┤                       │ OUT 0 ──► [Step 1 Jack]    │
+   │ RST(15) ◄── Q4    │                       │ OUT 1 ──► [Step 2 Jack]    │
+   │                   │                       │ OUT 2 ──► [Step 3 Jack]    │
+   │ Q0──►LED──►Diodes │                       │ OUT 3 ──► [Step 4 Jack]    │
+   │ Q1──►LED──►Diodes │                       └────────────────────────────┘
+   │ Q2──►LED──►Diodes │
+   │ Q3──►LED──►Diodes │
+   │ Q4──►RST(15)      │ ◄─ Auto-reset after step 4
+   └───────────────────┘
+```
+
+**Address Translation (Diode Logic)**:
+The CD4017 outputs are "One Hot" (one pin high at a time). The CD4051 expects binary address on A/B pins.
+Use 1N4148 diodes to create the address:
+
+| Step | CD4017 Output | A (Pin 11) | B (Pin 10) |
+|------|---------------|------------|------------|
+| 0    | Q0 High       | 0          | 0          |
+| 1    | Q1 High       | 1          | 0          |
+| 2    | Q2 High       | 0          | 1          |
+| 3    | Q3 High       | 1          | 1          |
+
+*   Q1 and Q3 connect to A via diodes
+*   Q2 and Q3 connect to B via diodes
+
+**CD4051 Power (Critical for Bipolar Audio)**:
+*   VEE (Pin 7): **-12V** (Must be negative for bipolar audio!)
 *   VSS (Pin 8): Ground
 *   VDD (Pin 16): +12V
 
