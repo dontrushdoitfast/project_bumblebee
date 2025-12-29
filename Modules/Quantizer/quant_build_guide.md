@@ -13,18 +13,18 @@ This build guides you through creating a precision **Quantizer** using the Raspb
 *   **Microcontroller**: **1x** Raspberry Pi Pico.
 *   **DACs**: **2x** MCP4725 Breakout Boards (I2C).
     *   *Mod Required*: On the second board, bridge the "A0" pad to change address to `0x61`.
-*   **Op-Amp**: **1x** TL072 (Dual Op-Amp) for Input Scaling.
-    *   **1x** 8-pin IC Socket.
 *   **User Input**:
     *   **12x** Tactile Buttons (6x6mm).
     *   **12x** PL9823 (or APA106) 5mm RGB LEDs (Through-hole NeoPixels).
+    *   **2x** Rotary Knobs + B100k Linear Pots.
 *   **Jacks**: **4x** Thonkiconn PJ-301M-12 (CV In A, CV In B, CV Out A, CV Out B).
-*   **Power**: **1x** L7805 CV (5V Regulator).
-*   **Resistors (Input Scaling)**:
-    *   **2x** 100k, **2x** 47k (Voltage Dividers).
-    *   **2x** Schottky Diode (Input Protection).
-*   **Protection (Outputs)**:
-    *   **2x** 1k Resistors (Placed in series with Output Jacks to protect DACs).
+*   **Power**:
+    *   **1x** L7805 CV (5V Regulator).
+    *   **1x** 10uF Electrolytic Capacitor (Power bypass).
+    *   **1x** 10-pin Eurorack Power Header.
+*   **Protection (Standard Bumblebee Prototcols)**:
+    *   **Inputs (x2)**: **100k** Series Resistor + **1N5817** Schottky Diode (Clamping to 3.3V).
+    *   **Outputs (x2)**: **1k** Series Resistor.
 
 ### Schematic / Wiring Logic
 
@@ -38,52 +38,42 @@ This build guides you through creating a precision **Quantizer** using the Raspb
    │   │   [C][C#][D][D#][E][F][F#][G][G#][A][A#][B]  ◄── 12 Buttons    │   │
    │   │   (●)(●)(●)(●)(●)(●)(●)(●)(●)(●)(●)(●)      ◄── 12 NeoPixels  │   │
    │   │                                                                │   │
-   │   │   Buttons: GP10-GP21                                           │   │
+   │   │   Buttons: GP10-GP21 (Internal PULL_DOWN)                      │   │
    │   │   LEDs: GP22 (Data) → Daisy chain                              │   │
    │   └────────────────────────────────────────────────────────────────┘   │
    │                                                                         │
-   │   ┌────────────────┐              ┌────────────────┐                   │
-   │   │  CV IN A       │              │  CV OUT A      │                   │
-   │   │  (10V→3.3V)    │──►GP26       │  (DAC 0x60)    │◄── I2C (GP8/9)   │
-   │   └────────────────┘              └────────────────┘                   │
-   │   ┌────────────────┐              ┌────────────────┐                   │
-   │   │  CV IN B       │              │  CV OUT B      │                   │
-   │   │  (10V→3.3V)    │──►GP27       │  (DAC 0x61)    │◄── I2C (GP8/9)   │
-   │   └────────────────┘              └────────────────┘                   │
+   │   ┌──────────────────────────┐    ┌─────────────────────────────────┐  │
+   │   │  CV IN A (Protected)     │    │  CV OUT A                       │  │
+   │   │  [Jack]→[100k]→[GP26]    │──► │  (DAC 0x60) → [1k] → [Jack]     │◄─│
+   │   │         │                │    │                                 │  │
+   │   │      [Diode]→3.3V        │    └─────────────────────────────────┘  │
+   │   └──────────────────────────┘                                         │
+   │                                                                         │
+   │   ┌──────────────────────────┐    ┌─────────────────────────────────┐  │
+   │   │  CV IN B (Protected)     │    │  CV OUT B                       │  │
+   │   │  [Jack]→[100k]→[GP27]    │──► │  (DAC 0x61) → [1k] → [Jack]     │◄─│
+   │   │         │                │    │                                 │  │
+   │   │      [Diode]→3.3V        │    └─────────────────────────────────┘  │
+   │   └──────────────────────────┘                                         │
    └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### 1. The Brain (Pico)
-*   **I2C Bus (DACs)**:
-    *   GP8 (SDA) -> Connect to SDA on BOTH DACs.
-    *   GP9 (SCL) -> Connect to SCL on BOTH DACs.
-    *   VCC -> 3.3V (or 5V if using level shifters, usually 3.3V is fine for MCP4725).
-*   **The "Piano" (UI)**:
-    *   **Buttons (Input)**: Connect 12 buttons to GP10-GP21.
-    *   **LEDs (Output)**: GP22 -> Data In of First LED. (Daisy chain Data Out -> Data In).
-    *   **Physical Layout (CRITICAL)**: Place each LED directly above its button. Black keys offset higher.
-*   **Analog Inputs**:
-    *   **CV In A** -> Scaled -> GP26 (ADC0).
-    *   **CV In B** -> Scaled -> GP27 (ADC1).
-*   **Power**:
-    *   Pico VSYS <- +5V from L7805.
-    *   Pico GND <- Common Ground.
-
-#### 2. Analog Front End (Dual Channel)
+#### 2. Analog Front End (Standard Protection)
+Replaces the old Op-Amp buffer with the simpler, safer "Bumblebee Standard":
 ```
-   [CV IN Jack]──►[100k]──┬──►[TL072 Follower]──►[Pico ADC]
-                          │
-                        [47k]
-                          │
-                         GND
-                         
-   Goal: 10V input = ~3.2V at ADC
+   [CV IN Jack] ──► [100k Resistor] ──┬──► [Pico GP26/27]
+                                      │
+                                   [1N5817 Schottky]
+                                      │
+                                     3.3V (Pico Pin 36)
 ```
+*   **Logic**: The 100k resistor limits current. If input > 3.3V, the diode conducts excess voltage to the 3.3V rail (safely).
+*   **Calibration**: The Pico reads a scaled voltage. You MUST run the calibration script to map "1V" input to "Note C1".
 
-#### 3. DAC Configuration
-*   **DAC 1**: Address 0x60 (Default). VOUT -> 1k Resistor -> Jack A Tip.
-*   **DAC 2**: Address 0x61 (Bridged A0). VOUT -> 1k Resistor -> Jack B Tip.
-*   The 1k resistor protects the DAC if you accidentally patch an Input signal into the Output jack.
+#### 3. Power & DAC
+*   **Power**: +12V from Rack -> L7805 -> Pico VSYS.
+    *   **Add 10uF Capacitor** between +12V and GND near the regulator.
+*   **DACs**: 1k resistor between DAC Output and Jack Tip.
 
 ### Step By Step guide
 

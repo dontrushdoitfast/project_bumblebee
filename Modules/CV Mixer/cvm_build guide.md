@@ -25,7 +25,7 @@ Note: we want 2 of these, so double it.
     *   1x for Feedback (Stage 2)
 *   **1x** **1k Resistor** (Output protection).
 *   **2x** **100nF Ceramic Capacitors** (Power decoupling).
-*   **1x** **10-pin Eurorack Power Header** (or hardwired cable).
+*   **1x** **10-pin Eurorack Power Header** (Male IDC).
 *   **Stripboard** (Small piece, approx 10x10 holes).
 
 ### Schematic / Circuit Logic

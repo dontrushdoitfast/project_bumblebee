@@ -1,6 +1,7 @@
 from machine import Pin, I2C
 import time
-from lib.europi_subset import Knob, Button
+# Assumes bumblebee_hardware.py is available
+from bumblebee_hardware import Knob, Button
 # from lib.i2c_lcd import I2cLcd # Commented out until user installs driver
 
 # --- CONFIG ---

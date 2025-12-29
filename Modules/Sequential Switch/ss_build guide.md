@@ -23,6 +23,8 @@ Note: we want 2 of these. So double the parts below.
     *   **1x** 2N3904 NPN Transistor (Buffer for Clock input).
     *   **1x** 100k Resistor (Pull-down for Clock).
     *   **1x** 1N4148 Diode (Protection).
+*   **Power**:
+    *   **1x** 10-pin Eurorack Power Header.
 
 ### Schematic / Wiring Diagram
 

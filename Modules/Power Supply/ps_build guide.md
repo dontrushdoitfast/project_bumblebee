@@ -27,7 +27,7 @@ This build uses a **Stripboard** (Veroboard) converting standard schematic logic
     *   **2x** 3mm LEDs (Green/Red).
     *   **2x** 1k Resistors (Current limiting for LEDs).
 *   **Connection**:
-    *   1x 16-pin Male Header (for Bus cable).
+    *   1x 10-pin Male Header (for Bus cable). **Standard Eurorack Power**.
     *   Pin headers or terminal blocks for wiring panel components.
 
 ### Schematic / Wiring Diagram

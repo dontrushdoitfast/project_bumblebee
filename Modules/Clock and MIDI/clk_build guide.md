@@ -19,12 +19,14 @@ This build features a "Modal" interface. You will be wiring up buttons and LEDs 
     *   **3x** Knobs for Pots.
 *   **Indicators**:
     *   **6x** 3mm LEDs (3x Green for Channels, 3x Red for Options).
-    *   **6x** 1k Resistors (Current limiting).
 *   **Jacks**: **5x** Thonkiconn PJ-301M-12.
-*   **Power**: **1x** L7805 CV (5V Regulator).
-*   **Protection (Critical)**:
-    *   **1x** 1k Resistor (Series).
-    *   **1x** 3.3V Zener Diode (Shunt to Ground) OR **2x** Schottky Diodes (Rail clamping). *Goal: Cap input voltage at 3.3V.*
+*   **Power**:
+    *   **1x** L7805 CV (5V Regulator).
+    *   **1x** 10uF Electrolytic Capacitor (Power bypass).
+    *   **1x** 10-pin Eurorack Power Header.
+*   **Protection (Standard Bumblebee Protocols)**:
+    *   **Input (Clock In)**: **1x 100k** Series Resistor + **1N5817** Schottky Diode (Clamping to 3.3V).
+    *   **Outputs (x4)**: **1k** Series Resistor (After Buffer).
 
 ### Schematic / Wiring Logic
 
@@ -41,7 +43,7 @@ This build features a "Modal" interface. You will be wiring up buttons and LEDs 
    │                     │  ├── GP27: Chan Knob       ├── GP13-15: LEDs │   │
    │  ┌──────────────┐   │  └── GP28: Opt Knob        └── GP6-8: LEDs   │   │
    │  │   CLOCK IN   │   │                                              │   │
-   │  │   GP9 (Prot) │   │  Digital Inputs                              │   │
+   │  │ (Protected)  │   │  Digital Inputs                              │   │
    │  └──────────────┘   │  ├── GP9: Clock In (protected)               │   │
    │                     │  ├── GP10-12: Encoder                        │   │
    │  ┌──────────────┐   │  ├── GP16: Chan Button                       │   │
@@ -52,10 +54,10 @@ This build features a "Modal" interface. You will be wiring up buttons and LEDs 
    └─────────────────────────────────────────────────────────────────────────┘
              │
              ▼
-   ┌──────────────────────────────────┐
-   │     CLOCK OUTPUTS (via buffer)   │
-   │   Out 1   Out 2   Out 3   Out 4  │
-   └──────────────────────────────────┘
+   ┌────────────────────────────────────────────────────────┐
+   │     CLOCK OUTPUTS (via CD4050 buffer + 1k resistor)    │
+   │   Out 1   Out 2   Out 3   Out 4                        │
+   └────────────────────────────────────────────────────────┘
 ```
 
 #### GPIO Pin Assignment
@@ -72,7 +74,7 @@ This build features a "Modal" interface. You will be wiring up buttons and LEDs 
 | Channel Knob | GP27 | ADC1 |
 | Option Knob | GP28 | ADC2 |
 | **Digital Inputs** | | |
-| Clock In | GP9 | Protected: 1k + 3.3V Zener |
+| Clock In | GP9 | Protected: 100k + Schottky |
 | Channel Button | GP16 | PULL_DOWN |
 | Option Button | GP17 | PULL_DOWN |
 | Encoder A/B/Sw | GP10-12 | |
@@ -83,9 +85,9 @@ This build features a "Modal" interface. You will be wiring up buttons and LEDs 
 
 #### Input Protection (Clock In)
 ```
-   [Jack Tip]──►[1k Resistor]──┬──►[GP9]
-                               │
-                               └──►[3.3V Zener]──►GND
+   [Jack Tip]──►[100k Resistor]──┬──►[GP9]
+                                 │
+                                 └──►[1N5817]──►3.3V
 ```
 Protects against over-voltage from 5V gates.
 

@@ -11,7 +11,9 @@ This software acts as a **Dual Channel Quantizer** with a **Piano Interface**. I
 │   ├── mcp4725.py     # Driver for the DACs
 │   ├── neopixel.py    # Standard MicroPython NeoPixel library
 │   ├── scale_logic.py # Manages active notes (C, C#, D...)
-│   └── inputs.py      # Handles ADC reading & Button scanning
+│   └── inputs.py      # Handles ADC reading & Button scanning (Wraps shared lib)
+├── ../../Shared/
+│   └── bumblebee_hardware.py # SHARED HARDWARE LIB (Knob, Button)
 ```
 
 ### 1. State Management

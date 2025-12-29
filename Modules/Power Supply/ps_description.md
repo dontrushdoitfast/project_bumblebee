@@ -13,7 +13,7 @@ The design uses a **Linear** topology with L7812 (Positive) and L7912 (Negative)
 4.  **Protection**: Fuses (PTC) and Diodes to prevent damage from faults.
 5.  **Interface**: 
     *   **Front Panel**: Power Switch, LED Indicators (+12V/-12V), and Barrel Jack Input.
-    *   **Rear**: Standard 16-pin Eurorack bus board connection.
+    *   **Rear**: Standard 10-pin Eurorack bus board connection.
 
 ### Panel Layout / Interface
 *   **Width**: 4HP (Dedicated Module)
