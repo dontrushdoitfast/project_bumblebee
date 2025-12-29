@@ -20,7 +20,7 @@ This is what the modules we create will be primarily used with.
 * Korg Modwave mk1
 
 
-## Project Goals ##
+## Project Goals
 
 
 1. Create a set of Eurorack modules to act as a Eurorack brain to integrate with the current setup to create a complete sequenced instrument.
@@ -37,24 +37,34 @@ The project will not:
 2. Build menu diving or complex interfaces.
 3. Use stored patterns, song modes, or DAW-style sequencing.
 
-## Phase 1 ##
+## Phase 1
 
 The following modules are planned for Phase 1 which is the main effort. Phase 2 is a dumping ground for future ideas that may never be built.
 
-1. Clock source, divider and multiplier
-2. Quantizer
-3. Sequential switch
-4. CV Mixer
-5. Offset/Attenuverter
+1. Power Supply (12v AC wall wart based)
+2. Clock source, divider and multiplier
+3. Quantizer
+4. Sequential switch
+5. CV Mixer
+6. Offset/Attenuverter
 
-## Project Structure ##
+Casing will be entirely 3d printed.
+
+## Project Structure
 
 Each module will have its own folder. It will include:
 * Requirements and description
 * Build guide and BOM
 * Code files as needed
 
+## General Considerations
 
-## Appendix: Phase 2 ##
+* Where a microcontroller is used, the Raspberry Pi Pico will be used unless there are very strong reasons not to. 
+* Prefer more buttons and controls over a display, but displays may be used where useful.
+* Prototype on a breadboard first to learn and understand. Final step will be to build a stripboard and full enclosures.
+* The EuroPi source code is included in the reference folder. Use it for important elements like voltage management and power safety.
+
+
+## Appendix: Phase 2
 
 (TBD)
