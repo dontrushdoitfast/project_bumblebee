@@ -91,6 +91,7 @@ Each module will have its own folder. It will include:
 * Prefer more buttons and controls over a display, but displays may be used where useful.
 * Prototype on a breadboard first to learn and understand. Final step will be to build a stripboard and full enclosures.
 * The EuroPi source code is included in the reference folder. Use it for important elements like voltage management and power safety.
+* Space is not at a premium - the focus is on usability and a fun experience.
 
 
 ## Appendix: Phase 2
