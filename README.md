@@ -37,18 +37,46 @@ The project will not:
 2. Build menu diving or complex interfaces.
 3. Use stored patterns, song modes, or DAW-style sequencing.
 
+## Safety & Testing Protocols
+
+**CRITICAL**: Every new module must be rigorously tested in isolation before being connected to the primary or secondary equipment.
+
+1.  **Smoke Test**: Check for shorts on power rails using a multimeter before powering on.
+2.  **Voltage Verification**: Measure all outputs with a multimeter/oscilloscope to ensure they do not exceed safe Eurorack limits (typically +/- 12V absolute max, but aim for standard signal ranges).
+3.  **Isolation**: Use the home-made power supply for testing. Do not test untrusted modules on the same bus board as the Behringer 2600.
+
+## Technical Standards
+
+To ensure compatibility with the Behringer 2600, Proton, and standard Eurorack gear:
+
+*   **Signals**:
+    *   **Audio**: +/- 5V (10Vpp).
+    *   **CV (Bipolar)**: +/- 5V (LFOs, etc.).
+    *   **CV (Unipolar)**: 0V to +10V (Envelopes) or 0V to +5V (Pitch/Digital CV).
+    *   **Triggers/Gates**: 0V (OFF) to +5V (ON). *Note: The Pico requires buffering to step up 3.3V signals to 5V.*
+*   **Power Connectivity**: Standard 10-pin or 16-pin Eurorack power headers.
+*   **HP Width**: Integers of 2HP (e.g., 4HP, 6HP, etc.) for easy fitting.
+
 ## Phase 1
 
 The following modules are planned for Phase 1 which is the main effort. Phase 2 is a dumping ground for future ideas that may never be built.
 
-1. Power Supply (12v AC wall wart based)
-2. Clock source, divider and multiplier
-3. Quantizer
-4. Sequential switch
-5. CV Mixer
-6. Offset/Attenuverter
+1.  Passive Attenuator (The "Hello World" build)
+2.  Power Supply (12v AC wall wart based)
+3.  Clock source, divider and multiplier
+4.  Quantizer
+5.  Sequential switch
+6.  CV Mixer
+7.  Offset/Attenuverter
 
 Casing will be entirely 3d printed.
+
+## Tooling
+
+*   **Schematics & PCB**: KiCad (Recommended) - It is the open-source standard for Eurorack DIY.
+*   **Code**: MicroPython (via Thonny IDE).
+*   **3D Design**: Onshape.
+*   **Slicing/Printing**: Orca Slicer, printed on a Creality K1 Max.
 
 ## Project Structure
 
