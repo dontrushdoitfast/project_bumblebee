@@ -20,7 +20,8 @@ This plan organizes the build into two stages.
 3.  **Arduino Bernoulli Gate** (Logic/Probability)
 4.  **Simple Euclidean** (Rhythmic Logic)
 5.  **Sequential Switch** (1 Unit) (Routing)
-6.  **The Bridge** (USB MIDI -> CV Interface)
+6.  **[PURCHASE] Behringer CM1A** (Replaces "The Bridge")
+    *   *Why*: £33 gets you 16-bit precision and immediate MIDI-CV. Hard to beat DIY price/performance here.
 
 ### Stage 1 Bill of Materials (BOM)
 
@@ -39,13 +40,12 @@ This plan organizes the build into two stages.
 #### 2. Chips & Microcontrollers (Sourcing: Bitsbox / Mouser)
 | Component | Quantity | Notes | Est. Cost |
 | :--- | :--- | :--- | :--- |
-| **Raspberry Pi Pico** | **2** | Euclidean + Bridge | £8.00 |
+| **Raspberry Pi Pico** | **2** | 1 for Euclidean + **1 Spare** (per request) | £8.00 |
 | **Arduino Nano** | *(Optional)* | If not using Uno | *(£4.00)* |
-| **CD4017** | **1** | Seq Switch | £0.50 |
-| **CD4051** | **1** | Seq Switch | £0.50 |
-| **MCP4822** | **1** | The Bridge (DAC) | £2.50 |
+| **CD4017** | **2** | 1 for Switch + **1 Spare** (CMOS is fragile!) | £1.00 |
+| **CD4051** | **2** | 1 for Switch + **1 Spare** | £1.00 |
 | **TL072** | **10** | **SMART BUY**: Standard Op-Amp. Used in Stage 2. Buy 10 pack. | £4.00 |
-| **L7812 + L7912** | **1 set** | PSU Regulators | £1.00 |
+| **L7812 + L7912** | **2 sets** | 1 for PSU + **1 Spare Set** (Critical if one blows) | £2.00 |
 
 #### 3. General Components (Sourcing: Bitsbox / Tayda)
 *   **Resistors** (**SMART BUY** - Buy Packs of 100):
@@ -81,7 +81,9 @@ This plan organizes the build into two stages.
 5.  **Simple Delay**
 6.  **Dual Linear VCA**
 7.  **Buffered Mult**
+7.  **Buffered Mult**
 8.  *(Remaining Sequential Switch if 2 desired later)*
+9.  **The Bridge** (Moved to Phase 2: If you want to learn DACs/Coding later)
 
 ### Stage 2 Bill of Materials (Approximate)
 *   **Jacks**: ~45
