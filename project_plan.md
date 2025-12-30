@@ -27,11 +27,11 @@ This plan organizes the build into two stages.
 #### 1. Specialized Parts (Sourcing: Thonk / Synthcube)
 | Component | Quantity | Notes | Est. Cost |
 | :--- | :--- | :--- | :--- |
-| **3.5mm Jacks** (PJ-301M-12) | **23** | 4(PA) + 3(ABG) + 3(Euc) + 7(SS) + 6(Bdg) | £8.05 |
-| **Potentiometers** (B100k) | **4** | 2(PA) + 1(ABG) + 1(Euc) | £4.80 |
-| **Knobs** (To fit Pots) | **4** | | £3.00 |
+| **3.5mm Jacks** (PJ-301M-12) | **50 - 100** | **SMART BUY**: You need ~70 total. Buying 50+ is cheaper per unit. | £18 - £35 |
+| **Potentiometers** (B100k) | **25 - 30** | **SMART BUY**: You need ~30 total. Buy a bulk pack now. | ~£25.00 |
+| **Knobs** (To fit Pots) | **4** | Buy as needed (Expensive to bulk buy if style preference changes). | £3.00 |
 | **Tactile Buttons** | **2** | 1(ABG) + 1(Euc) | £0.50 |
-| **Power Header** (10-pin) | **5** | 1 per active module + 1 on PSU | £1.25 |
+| **Power Header** (10-pin) | **10** | **SMART BUY**: Buy a pack of 10 now. | £2.50 |
 | **Power Cable** (10-to-10) | **5** | | £12.50 |
 | **SPST Switch** | **1** | For PSU | £0.75 |
 | **DC Barrel Jack** | **1** | Panel Mount (2.1mm) | £1.00 |
@@ -44,19 +44,21 @@ This plan organizes the build into two stages.
 | **CD4017** | **1** | Seq Switch | £0.50 |
 | **CD4051** | **1** | Seq Switch | £0.50 |
 | **MCP4822** | **1** | The Bridge (DAC) | £2.50 |
-| **TL072** | **1** | The Bridge (OpAmp) | £0.40 |
+| **TL072** | **10** | **SMART BUY**: Standard Op-Amp. Used in Stage 2. Buy 10 pack. | £4.00 |
 | **L7812 + L7912** | **1 set** | PSU Regulators | £1.00 |
 
 #### 3. General Components (Sourcing: Bitsbox / Tayda)
-*   **Resistors**:
-    *   100k (x5), 1k (x10), 10k/39k (Bridge Gain).
+*   **Resistors** (**SMART BUY** - Buy Packs of 100):
+    *   100k (Input Modulation)
+    *   1k (Output Protection)
+    *   10k / 39k (Small packs OK)
 *   **Capacitors**:
     *   2200uF 25V (x2) (PSU Main)
-    *   10uF (x5) (Local bypass)
-    *   100nF (x10) (Decoupling)
+    *   10uF (x10) (Local bypass)
+    *   100nF (**SMART BUY** - Buy Pack of 50/100) (Decoupling)
 *   **Diodes**:
     *   1N4004 (x2) (PSU)
-    *   1N4148 (x10) (Switch Logic)
+    *   1N4148 (**SMART BUY** - Buy Pack of 50) (Switch Logic + General)
     *   1N5817 (x2) (Pico Inputs)
 *   **Transistors**:
     *   2N3904 (x1) (Switch Clock)
