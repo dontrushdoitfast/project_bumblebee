@@ -2,7 +2,7 @@
 
 This list aggregates components for **All 8 Modules** (including duplicates where prompted):
 1.  **CV Mixer** (x2)
-2.  **Clock and MIDI**
+2.  **Clock Generator**
 3.  **Offset / Attenuverter** (x2)
 4.  **Passive Attenuator**
 5.  **Power Supply**

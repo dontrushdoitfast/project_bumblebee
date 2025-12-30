@@ -5,7 +5,7 @@ This document outlines the MicroPython architecture for the **Smart Lab Clock**.
 
 ### Directory Structure
 ```
-/Modules/Clock and MIDI/Code/
+/Modules/Clock Generator/Code/
 ├── main.py            # Entry point & Core Loop
 ├── lib/
 │   ├── lcd_api.py     # Library for 2004 LCD

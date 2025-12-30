@@ -70,12 +70,15 @@ The following modules are planned for Phase 1 which is the main effort. Phase 2 
 2.  Power Supply (12v AC wall wart based)
 3.  **Simple Euclidean Generator** (Pico-based)
 4.  **Arduino Bernoulli Gate** (Arduino-based)
-5.  Clock source, divider and multiplier
+5.  Clock Generator
 6.  Quantizer
 7.  Sequential Switch
 8.  CV Mixer
 9.  Offset/Attenuverter
 10. Simple 2-channel dirty delay
+11. **Dual Linear VCA**
+12. **The Bridge (USB MIDI to CV)**
+13. **Buffered Mult**
 
 Casing will be entirely 3d printed.
 
