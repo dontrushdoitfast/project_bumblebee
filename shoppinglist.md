@@ -1,6 +1,6 @@
 # Bumblebee Project Shopping List (UK Edition)
 
-This list aggregates components for **All 8 Modules** (including duplicates where prompted):
+This list aggregates components for **All 11 Modules** (including duplicates where prompted):
 1.  **CV Mixer** (x2)
 2.  **Clock Generator**
 3.  **Offset / Attenuverter** (x2)
@@ -9,6 +9,10 @@ This list aggregates components for **All 8 Modules** (including duplicates wher
 6.  **Quantizer**
 7.  **Sequential Switch** (x2)
 8.  **Simple Delay**
+9.  **Simple Euclidean** & **Bernoulli Gate** (Pico Builds)
+10. **Dual Linear VCA**
+11. **The Bridge**
+12. **Buffered Mult**
 
 ---
 
@@ -24,8 +28,8 @@ This list aggregates components for **All 8 Modules** (including duplicates wher
 
 | Component | Quantity Needed | Bulk Buy Recommendation | Est. Price (Each) | Est. Total | Notes |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **3.5mm Jack** (Thonkiconn PJ-301M-12) | 46 | **50 pack** | ~£0.35 | £17.50 | 8 (CVM) + 5 (Clk) + 8 (OA) + 4 (Att) + 4 (Qnt) + 14 (SS) + 2 (Dly) + 1 (PSU). |
-| **Potentiometer** (Alpha 9mm Vertical B100K) | 22 | **25 pack (or 2x 10 pack)** | ~£1.20 | £26.00 | 6 (CVM) + 3 (Clk) + 8 (OA) + 2 (Att) + 3 (Dly). Linear. |
+| **3.5mm Jack** (Thonkiconn PJ-301M-12) | 68 | **70-80 (2x 50 pack?)** | ~£0.35 | ~£25.00 | +6 (VCA), +6 (Bridge), +4 (Mult), +6 (Pico x2). |
+| **Potentiometer** (Alpha 9mm Vertical B100K) | 28 | **30 pack** | ~£1.20 | £33.00 | +4 (VCA), +2 (Pico x2). Linear. |
 | **Knobs** (Davies 1900 Clone) | 22 | **25 pack** | ~£0.70 | £17.50 | To match pots. |
 | **Power Header** (10-pin Eurorack) | 2 | **10 pack** | ~£0.25 | £2.50 | Male IDC headers (boxed or unboxed). 10-pin ONLY. |
 | **Power Cable** (10-to-10 pin) | 2 | **5 pack** | ~£2.50 | £12.50 | Ribbon cables. 10-pin is standard. |
@@ -59,10 +63,16 @@ This list aggregates components for **All 8 Modules** (including duplicates wher
     *   **1N4004** (x2): PSU.
     *   **3.3V Zener**: Clock protection.
     *   **Schottky**: Quantizer.
-*   **LEDs**: ~£3.00
     *   **3mm** (x20): Mixed Red/Green.
     *   **PL9823 / NeoPixel 5mm** (x12): Quantizer.
     *   **Bipolar 3mm** (x4): OA.
+*   **ICs (New Additions)**:
+    *   **LM13700** (x1): Dual VCA.
+    *   **MCP4822** (x1): The Bridge DAC.
+    *   **TL074** (x1): Buffered Mult.
+    *   **TL072** (x4): CV Mixer(2), Quantizer(1), VCA(1).
+    *   **Raspberry Pi Pico** (x4): Clock, Quantizer, Bridge, Euclidean.
+    *   **Arduino Nano** (x1): Bernoulli Gate.
 *   **Display**: LCD 2004 with I2C Backpack (x1). ~£5.00 (eBay/Amazon).
 *   **Encoder**: Rotary Encoder with Push Switch (x1). ~£1.50.
 
@@ -84,6 +94,6 @@ This list aggregates components for **All 8 Modules** (including duplicates wher
 | Semiconductors | £24.15 |
 | Passives & Misc | £36.50 |
 | Power Supply (Brick) | £15.00 |
-| **Total** | **~£168.90** |
+| **Total** | **~£210.00** |
 
 *Note: This builds a fully functional Eurorack system with 8 modules (11 physical units). Cost per module is approx £15!*
