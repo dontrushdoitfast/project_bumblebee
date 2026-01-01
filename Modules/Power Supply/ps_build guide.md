@@ -90,10 +90,25 @@ This build uses a **Stripboard** (Veroboard) converting standard schematic logic
 *   **Output is 0V**: Check fuse (if installed) or Switch wiring.
 *   **Negative Rail is Positive**: Capacitor polarity reversed or Diode backward.
 
-### Testing plan
-1.  **Visual Inspection**: Check all polarized capacitors. **If backwards, they will explode.**
-2.  **Continuity**: Check GND to +12V and GND to -12V pins. Should NOT beep.
-3.  **Voltage Check (No Load)**: Power on. Measure Rails.
-    *   Red Probe on +12, Black on GND: **+11.8V to +12.2V**.
-    *   Red Probe on -12, Black on GND: **-11.8V to -12.2V**.
-4.  **Load Test**: Connect a cheap module (or resistor). Monitor voltage sag.
+### Testing plan (Enhanced Safety)
+1.  **Visual Inspection**: 
+    *   Check all polarized capacitors. **If backwards, they will explode.**
+    *   Check Diode orientation (Stripes must match layout).
+    *   Check IC orientation (L7812 vs L7912 are NOT interchangeable).
+    *   **Track Inspection**: Hold the board up to a light. Ensure no copper debris is bridging tracks, especially where you made cuts.
+2.  **Continuity Check (Power OFF)**: 
+    *   Set Multimeter to "Beep" or "Ohms".
+    *   Check **Input AC to GND**: Should be Open (No beep).
+    *   Check **+12V Output to GND**: Should show charging capacitor (brief beep then silence/climbing resistance). If steady ZERO ohms, you have a short.
+    *   Check **-12V Output to GND**: Same as above.
+    *   Check **+12V to -12V**: Should be Open.
+3.  **Voltage Check (No Load)**: 
+    *   Power on the AC Wall Wart (Switch OFF first).
+    *   Flip Switch ON. LEDs should light up.
+    *   **Measure +12V Rail**: Red Probe on +12, Black on GND. Target: **+11.8V to +12.2V**.
+    *   **Measure -12V Rail**: Red Probe on -12, Black on GND. Target: **-11.8V to -12.2V**.
+    *   *If voltages are wrong (e.g. 18V or 0V), Turn OFF immediately.*
+4.  **Load Test (The "Smoke Test")**: 
+    *   Connect a 1k resistor between +12V and GND. Verify voltage stays stable.
+    *   Connect a 1k resistor between -12V and GND. Verify voltage stays stable.
+    *   Only if stable, connect a real module (e.g. Passive Attenuator or cheap test utility).

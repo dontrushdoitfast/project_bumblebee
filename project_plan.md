@@ -37,15 +37,25 @@ This plan organizes the build into two stages.
 | **SPST Switch** | **1** | For PSU | £0.75 |
 | **DC Barrel Jack** | **1** | Panel Mount (2.1mm) | £1.00 |
 
+#### 1a. Tools & Equipment (Essential for Stage 1)
+| Tool | Note | Est. Cost |
+| :--- | :--- | :--- |
+| **Soldering Iron** | Adjustable temperature recommended. | ~£20+ |
+| **Multimeter** | Essential for safety checks. | ~£15 |
+| **Track Cutter** | Or a 3mm Drill Bit (for breaking stripboard tracks). | ~£4 |
+| **Veroboard / Stripboard** | Buy large sheets (e.g. 100x160mm) and cut to size. | ~£10 |
+| **Wire Strippers & Cutters** | | ~£10 |
+| **Desoldering Pump** | For inevitable mistakes. | ~£5 |
+
 #### 2. Chips & Microcontrollers (Sourcing: Bitsbox / Mouser)
 | Component | Quantity | Notes | Est. Cost |
 | :--- | :--- | :--- | :--- |
-| **Raspberry Pi Pico** | **2** | 1 for Euclidean + **1 Spare** (per request) | £8.00 |
-| **Arduino Nano** | *(Optional)* | If not using Uno | *(£4.00)* |
-| **CD4017** | **2** | 1 for Switch + **1 Spare** (CMOS is fragile!) | £1.00 |
-| **CD4051** | **2** | 1 for Switch + **1 Spare** | £1.00 |
-| **TL072** | **10** | **SMART BUY**: Standard Op-Amp. Used in Stage 2. Buy 10 pack. | £4.00 |
-| **L7812 + L7912** | **2 sets** | 1 for PSU + **1 Spare Set** (Critical if one blows) | £2.00 |
+| **Raspberry Pi Pico** | **2** | 1 for Euclidean + **1 Spare**. **Add 2x 20-pin Female Headers**. | £8.00 |
+| **Arduino Nano** | *(Optional)* | If not using Uno. **Add 2x 15-pin Female Headers**. | *(£4.00)* |
+| **CD4017** | **2** | 1 for Switch + **1 Spare**. **Add 16-pin DIL Socket**. | £1.00 |
+| **CD4051** | **2** | 1 for Switch + **1 Spare**. **Add 16-pin DIL Socket**. | £1.00 |
+| **TL072** | **10** | **SMART BUY**: Standard Op-Amp. Used in Stage 2. **Add 8-pin DIL Sockets**. | £4.00 |
+| **L7812 + L7912** | **2 sets** | 1 for PSU + **1 Spare Set**. (No socket needed - Heatsink mount). | £2.00 |
 
 #### 3. General Components (Sourcing: Bitsbox / Tayda)
 *   **Resistors** (**SMART BUY** - Buy Packs of 100):

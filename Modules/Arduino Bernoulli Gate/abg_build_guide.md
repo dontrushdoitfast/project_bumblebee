@@ -1,7 +1,7 @@
 # Arduino Bernoulli Gate Build Guide
 
 ## Bill of Materials
-*   **Microcontroller**: **1x** Arduino Nano (or Uno/Pro Mini).
+*   **Microcontroller**: **1x** Arduino Nano (or Uno/Pro Mini). **(Plus 2x 15-pin Female Headers for socketing)**.
     *   *Clone Note*: Ensure it uses the CH340 driver if applicable.
 *   **Jacks**: **3x** Thonkiconn PJ-301M-12 (Trig In, Out A, Out B).
 *   **Potentiometer**: **1x** B10k or B100k Linear.

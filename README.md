@@ -84,7 +84,7 @@ Casing will be entirely 3d printed.
 
 ## Tooling
 
-*   **Schematics & PCB**: KiCad (Recommended) - It is the open-source standard for Eurorack DIY.
+*   **Schematics & PCB**: DIYLC (DIY Layout Creator) - Recommended for designing Stripboard layouts.
 *   **Code**: MicroPython (via Thonny IDE).
 *   **3D Design**: Onshape.
 *   **Slicing/Printing**: Orca Slicer, printed on a Creality K1 Max.

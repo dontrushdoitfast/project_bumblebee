@@ -5,7 +5,7 @@
 
 | Component | Quantity | Purpose | Notes |
 | :--- | :---: | :--- | :--- |
-| **Raspberry Pi Pico** | 1 | Brains | Standard header installation. |
+| **Raspberry Pi Pico** | 1 | Brains | Standard header installation. **Use 2x 20-pin Female Headers**. |
 | **3.5mm Mono Jack** | 3 | Input, Out A, Out B | Thonkiconn / PJ-301M. |
 | **Potentiometer** | 1 | Density | B100K 9mm Vertical (Linear). |
 | **Tactile Button** | 1 | Reset / Tap | 6x6mm standard. |

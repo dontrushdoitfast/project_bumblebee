@@ -12,8 +12,8 @@ This module introduces **Active Electronics** (Integrated Circuits). You will wi
 Note: we want 2 of these. So double the parts below.
 
 *   **ICs**:
-    *   **1x** CD4017BE (Decade Counter).
-    *   **1x** CD4051BE (8-Channel Analog Mux/Demux).
+    *   **1x** CD4017BE (Decade Counter). **(Plus 16-pin DIL Socket)**.
+    *   **1x** CD4051BE (8-Channel Analog Mux/Demux). **(Plus 16-pin DIL Socket)**.
 *   **Jacks**:
     *   **7x** Thonkiconn PJ-301M-12 (Clock, Reset, Common, 4x Steps).
 *   **LEDs**:
