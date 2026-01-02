@@ -55,6 +55,16 @@ This plan organizes the build into two stages.
 
 #### 2. Chips & Microcontrollers (Sourcing: Bitsbox / Mouser / Amazon)
 **STATUS: ORDERED (2026-01-02)**
+*   **NOTE**: You purchased a **Behringer CM1A** (MIDI to CV). This effectively acts as "The Bridge" for now, allowing you to control the rack from your DAW immediately.
+*   **Raspberry Pi Pico H**: 2x Received.
+
+#### 3. Missing / To-Source Items (Critical Check)
+#### 3. Missing / To-Source Items (Critical Check)
+*   **Patch Cables**: You still need **3.5mm mono patch cables** to patch modules together. You won't be able to patch a signal without these!
+
+#### 4. Resolved / Ordered Items
+*   **Power Supply Rectifier Diodes**: 100x 1N4001 (Amazon). **Status: ORDERED**.
+*   **Power Cables**: 5x 30cm Eurorack Cables (Amazon). **Status: ORDERED**.
 | Component | **Min Needed Now** | **Smart Buy** | Notes |
 | :--- | :---: | :---: | :--- |
 | **Raspberry Pi Pico H** | **1** | **2** | **"H" version means pre-soldered pins.** Saves time and risk. |
