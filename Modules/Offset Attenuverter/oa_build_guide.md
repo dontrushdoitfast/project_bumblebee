@@ -18,7 +18,7 @@ This build creates a simple but useful op-amp circuit. It mixes an input signal 
 *   **4x** 100k Linear Potentiometers (16mm Panel Mount).
     *   *Note: Center-detent pots are nice for Attenuverters/Offsets but standard linear works fine.*
 *   **4x** Knobs (6mm shaft).
-*   **2x** Bipolar LEDs (Red/Green 3mm or 5mm).
+*   **2x** Bipolar LEDs (Red/Green 5mm preferred).
 *   **1x** 10-pin Male Power Header.
 *   **Capacitors**: 2x 10uF (Power), 2x 100nF (Bypass).
 *   **Resistors (1/4W Metal Film)**:

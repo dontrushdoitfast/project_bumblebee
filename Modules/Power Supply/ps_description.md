@@ -9,12 +9,13 @@ The design uses a **Linear** topology with L7812 (Positive) and L7912 (Negative)
 ### Requirements
 1.  **Input**: 12V to 15V **AC** (Alternating Current). *Note: DC wall warts will NOT work for the negative rail.*
 2.  **Output**: Regulated +12V and -12V DC.
-3.  **Current Capacity**: Approx 500mA - 1A per rail (limited by the wall wart and heatsinking).
+3.  **Current Capacity**: Up to 1000mA (1A) per rail. *Note: Using a 2000mA Wall Wart provides longevity and headroom.*
 4.  **Protection**: Fuses (PTC) and Diodes to prevent damage from faults.
 5.  **Interface**: 
+6.  **Interface**: 
     *   **Front Panel**: Power Switch, LED Indicators (+12V/-12V), and Barrel Jack Input.
-    *   **Rear**: Standard 10-pin Eurorack bus board connection.
-6.  **Compatibility**: Needs to work with genuine Eurorack modules, like the Behringer CM1A.
+    *   **Rear**: Standard 16-pin Eurorack Boxed Header (supports Flying Bus cables).
+7.  **Compatibility**: Needs to work with genuine Eurorack modules, like the Behringer CM1A.
 
 ### Panel Layout / Interface
 *   **Width**: 4HP (Dedicated Module)
@@ -27,9 +28,9 @@ The design uses a **Linear** topology with L7812 (Positive) and L7912 (Negative)
 
 ### Technical Specifications
 *   **Topology**: Linear Half-Wave Rectifier + Series Regulators.
-*   **Regulators**: L7812 (+12V) and L7912 (-12V).
+*   **Regulators**: L7812 (+12V) and L7912 (-12V). **TO-220 Package (1.5A) required.**
 *   **Filter Capacitors**: 2200uF or larger recommended to reduce ripple.
-*   **Heat Dissipation**: Regulators will get warm/hot under load; consider heatsinks if drawing >200mA.
+*   **Heat Dissipation**: Regulators will get warm/hot under load; heatsinks are recommended for long-term health.
 
 ### Exclusions
 *   **5V Rail**: This design does NOT include a 5V regulator (Pico modules usually generate their own 5V/3.3V from 12V).

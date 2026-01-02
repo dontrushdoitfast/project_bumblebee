@@ -18,7 +18,7 @@ This build features a "Modal" interface. You will be wiring up buttons and LEDs 
     *   **2x** Momentary Push Buttons (Panel mount).
     *   **3x** Knobs for Pots.
 *   **Indicators**:
-    *   **6x** 3mm LEDs (3x Green for Channels, 3x Red for Options).
+    *   **6x** 5mm LEDs (3x Green for Channels, 3x Red for Options).
 *   **Jacks**: **5x** 3.5mm Mono Jacks (Panel Mount).
 *   **Power**:
     *   **1x** L7805 CV (5V Regulator).

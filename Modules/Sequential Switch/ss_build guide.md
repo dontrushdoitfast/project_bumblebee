@@ -17,7 +17,7 @@ Note: we want 2 of these. So double the parts below.
 *   **Jacks**:
     *   **7x** 3.5mm Mono Jacks (Panel Mount).
 *   **LEDs**:
-    *   **4x** 3mm LEDs (Color of choice).
+    *   **4x** 5mm LEDs (Color of choice).
     *   **4x** 1k Resistors (Current limiting).
 *   **Logic Helpers**:
     *   **1x** 2N3904 NPN Transistor (Buffer for Clock input).

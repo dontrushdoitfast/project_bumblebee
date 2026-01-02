@@ -12,6 +12,7 @@
 | **Resistor 100kΩ** | 1 | Input Protection | |
 | **Resistor 1kΩ** | 2 | Output Protection | |
 | **Diode 1N5817** | 1 | Input Voltage Clamp | Schottky. |
+| **LED 5mm** | 1 | Hit Indicator | Panel Mount (Optional). |
 | **10-pin Power Header** | 1 | Power Input | Male, Break-away. |
 | **10uF Capacitor** | 1 | Power Filtering | |
 

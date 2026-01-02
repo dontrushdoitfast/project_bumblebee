@@ -10,6 +10,8 @@
 *   **Resistors**:
     *   **1x** 100k (Input Protection).
     *   **2x** 1k (Output Output Protection).
+*   **Indicators**:
+    *   **2x** 5mm LEDs (Out A / Out B).
 *   **Power**:
     *   **1x** 10-pin Male Power Header.
     *   **1x** L7805 CV (5V Regulator) + 10uF Cap. *(Optional: Can use Arduino Onboard VIN for 12V, but L7805 is safer/cooler).*

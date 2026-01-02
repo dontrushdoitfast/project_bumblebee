@@ -14,20 +14,20 @@ This build uses a **Stripboard** (Veroboard) converting standard schematic logic
 
 ### Bill Of Materials
 *   **1x** Stripboard (approx 20 rows x 20 columns minimum).
-*   **1x** 12V AC Wall Wart (1000mA). **MUST BE AC OUTPUT.**
-*   **1x** PJ-002A (or compatible) 2.1mm Barrel Jack (Panel Mount).
-*   **1x** SPST Toggle Switch (Panel Mount).
+*   **1x** 12V AC Wall Wart (2000mA / 24VA). **MUST BE AC OUTPUT.**
+*   **1x** DC Barrel Jack (Panel Mount) - 2.1mm / 2.5mm "Universal" fit recommended.
+*   **1x** SPST Switch (Panel Mount). *Note: Illuminated Rocker Switch (12V) is a great alternative.*
 *   **Power Components**:
-    *   **1x** L7812CV (+12V Regulator).
-    *   **1x** L7912CV (-12V Regulator). *Note: Different pinout to 7812!*
-    *   **2x** 2200uF 25V Electrolytic Capacitors (Unpolarized is OK, but Polarized usually standard).
-    *   **2x** 10uF 25V Tantalum/Electrolytic Capacitors (for regulator stability).
-    *   **2x** 1N4004 (or 1N4001) Diodes (Rectifiers).
+    *   **1x** L7812CV (+12V Regulator, TO-220).
+    *   **1x** L7912CV (-12V Regulator, TO-220). *Note: Different pinout to 7812!*
+    *   **2x** 2200uF 25V Electrolytic Capacitors.
+    *   **2x** 10uF 25V Electrolytic Capacitors (Decoupling).
+    *   **2x** 1N4004 Diodes (Rectifiers).
 *   **Indicators**:
-    *   **2x** 3mm LEDs (Green/Red).
+    *   **2x** 5mm LEDs (Green/Red - Diffused recommended).
     *   **2x** 1k Resistors (Current limiting for LEDs).
 *   **Connection**:
-    *   1x **16-pin Male Boxed Header** (for Flying Bus Cable). **Standard Eurorack Power**.
+    *   1x **16-pin Male Boxed/Shrouded Header**. This provides the 10-pin power connection plus 5V and Gate/CV bus access for expansions. **Key for reverse-polarity protection.**
     *   Pin headers or terminal blocks for wiring panel components.
 
 ### Schematic / Wiring Diagram

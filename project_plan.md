@@ -36,7 +36,8 @@ This plan organizes the build into two stages.
 | **Tactile Buttons** | **2** | **10** | Standard 6x6mm or Panel Mount variants. |
 | **Power Header (PSU)** | **1** | **1** | **16-pin Male Header** (Boxed). Solder to PSU board. |
 | **Power Header (Modules)** | **4** | **12** | **10-pin Male Header**. Solder to Module board. |
-| **Ribbon Cable / Wire** | **1 spool** | **Multi-colour** | For linking Interface Board <-> Logic Board. |
+| **Ribbon Cable** | **1 meter** | **Rainbow (10+ way)** | For clean connections between Panel <-> Logic Board. |
+| **Solid Core Wire** | **1 spool** | **22 or 24AWG** | For Stripboard links, jumpers, and Ground Bus wiring. |
 | **SPST Switch** | **1** | **1** | For PSU (Panel Mount Toggle). |
 | **DC Barrel Jack** | **1** | **1** | Panel Mount (2.1mm). |
 
@@ -50,37 +51,33 @@ This plan organizes the build into two stages.
 | **Veroboard / Stripboard** | Buy large sheets (e.g. 100x160mm) and cut to size. | ~£10 |
 | **Wire Strippers & Cutters** | | ~£10 |
 | **Desoldering Pump** | For inevitable mistakes. | ~£5 |
+| **Helping Hands** | A stand with clips to hold parts while soldering. | ~£8 |
 
-#### 2. Chips & Microcontrollers (Sourcing: Bitsbox / Mouser)
+#### 2. Chips & Microcontrollers (Sourcing: Bitsbox / Mouser / Amazon)
+**STATUS: ORDERED (2026-01-02)**
 | Component | **Min Needed Now** | **Smart Buy** | Notes |
 | :--- | :---: | :---: | :--- |
-| **Raspberry Pi Pico** | **1** | **2** | 1 for Euclidean. Smart Buy adds 1 Spare. |
+| **Raspberry Pi Pico H** | **1** | **2** | **"H" version means pre-soldered pins.** Saves time and risk. |
 | **Arduino Nano** | **1** | **1** | For Bernoulli Gate. |
 | **CD4017** | **1** | **2** | 1 for Switch. Smart Buy adds 1 Spare. |
 | **CD4051** | **1** | **2** | 1 for Switch. Smart Buy adds 1 Spare. |
 | **TL072** | **0** | **10** | None needed for Stage 1! Used in Stage 2. |
-| **L7812 + L7912** | **1 set** | **2 sets** | 1 for PSU. Smart Buy adds Spare Set. |
+| **L7812 + L7912** | **1 set** | **2 sets** | **TO-220 Package (1.5A version).** Avoid "L" variants for the main PSU. |
 | **IC Sockets** (DIP-16) | **2** | **10** | For CD4017/CD4051. |
-| **Pico/Nano Headers** | **1 set** | **10 sets** | 20-pin (Pico) + 15-pin (Nano) Female Headers. |
+| **Female Headers** | **1 set** | **10 sets** | **20-pin strips**. Needed on stripboard to "plug in" the Pico. |
 
-#### 3. General Components (Sourcing: Bitsbox)
-*   **Resistors** (**SMART BUY** - Buy Packs of 100):
-    *   100k (Input Modulation)
-    *   1k (Output Protection)
-    *   10k / 39k (Small packs OK)
-*   **Capacitors**:
-    *   2200uF 25V (x2) (PSU Main)
-    *   10uF (x10) (Local bypass)
-    *   100nF (**SMART BUY** - Buy Pack of 50/100) (Decoupling)
-*   **Diodes**:
-    *   1N4004 (x2) (PSU)
-    *   1N4148 (**SMART BUY** - Buy Pack of 50) (Switch Logic + General)
-    *   1N5817 (x2) (Pico Inputs)
-*   **Transistors**:
-    *   2N3904 (x1) (Switch Clock)
-*   **LEDs**:
-    *   ~6 (Indicators)
-*   **Stripboard**: 2-3 large sheets.
+#### 3. General Components (Style: Through-Hole / Axial)
+*   **Resistor & Diode Kit** (**SMART BUY**): **Miuzei 1475pcs Assortment Kit** (~£12 on Amazon).
+    *   *Includes*: 1/4W 1% Metal Film Resistors (all needed values) + 50 Rectifier Diodes.
+    *   *Why*: Neatly labeled and covers Stage 1 AND Stage 2 for less than buying individual packs.
+*   **Capacitors** (**Min 25V Rating**):
+    *   **2200uF Electrolytic** (x2) (PSU Main)
+    *   **10uF Electrolytic** (x20) (Local decoupling - SMART BUY pack)
+    *   **100nF Ceramic MLCC** (x50) (Essential - SMART BUY pack)
+*   **Transistors**: **2N3904** (x10) (TO-92 Package).
+*   **LEDs**: ~10 (5mm Diffuse Indicators - recommended for visibility).
+*   **Stripboard**: **FR2 / Epoxy Paper** (Easier to cut by hand).
+    *   Search CPC for **E003** (160x100mm) or **E011** (500x100mm).
 
 **Est. Stage 1 Total: ~£60 - £75** (Plus Wall Wart if needed)
 
