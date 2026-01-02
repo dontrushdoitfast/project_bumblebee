@@ -11,9 +11,9 @@ This is the simplest module in the system, making it perfect for the first build
 *   **3D Printer** (Creality K1 Max) & PLA/PETG filament
 
 ### Bill Of Materials
-*   **4x** **Thonkiconn PJ-301M-12** (3.5mm Mono Jacks) - Selected for durability and threaded metal nut for secure faceplate mounting.
-*   **2x** **Alpha 9mm Vertical Potentiometer, B100K** (Linear) - Standard Eurorack pot with good feel.
-*   **2x** Knobs (Davies 1900 Clone or similar to fit 6mm shaft)
+*   **4x** **3.5mm Mono Jacks** (Panel Mount) - Generic CPC/Lumberg type.
+*   **2x** **100k Linear Potentiometers (16mm)** - High quality, solder-lug terminals.
+*   **2x** Knobs (To fit 6mm shaft)
 *   **Wire**: 24AWG or 26AWG stranded wire (various colors recommended for Signal vs Ground)
 *   **3D Printed Faceplate**: (STL to be generated)
 

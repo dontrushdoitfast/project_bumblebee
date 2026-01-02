@@ -27,18 +27,17 @@ This plan organizes the build into two stages.
 
 #### 1. Specialized Parts (Sourcing: Thonk / Synthcube)
 | Component | Quantity | Notes | Est. Cost |
-#### 1. Specialized Parts (Sourcing: Thonk / Synthcube)
+#### 1. Mechanical & Interface (Source: CPC Farnell)
 | Component | **Min Needed Now** | **Smart Buy** | Notes |
 | :--- | :---: | :---: | :--- |
-| **3.5mm Jacks** (PJ-301M-12) | **15** | **70** | 4(Atten) + 1(PSU) + 3(ABG) + 3(Euc) + 4(Switch). Buying 70 covers Stage 2. |
-| **Potentiometers** (B100k) | **4** | **30** | 2(Atten) + 1(ABG) + 1(Euc). 30 covers Stage 2. |
-| **Knobs** (To fit Pots) | **4** | **25** | Only 4 needed for Stage 1. |
-| **Tactile Buttons** | **2** | **10** | 1(ABG) + 1(Euc). |
-| **Power Header (PSU)** | **1** | **1** | **16-pin Male Header** (Boxed/Keyed). Solder to PSU board. |
-| **Power Header (Modules)** | **4** | **12** | **10-pin Male Header** (Unboxed/Break-away). Solder to Module boards. |
-| **Flying Bus Cable** | **1** | **1** | **Male Flying Bus Cable (Long - 60cm)**. Connects to PSU Header. |
-| **Module Power Cables** | **5** | **10** | **"10-16 Pin Power Cable"** (Short - 15cm). Connects modules to Bus. |
-| **SPST Switch** | **1** | **1** | For PSU. |
+| **3.5mm Jacks** (Panel Mount) | **15** | **50+** | Generic "Chassis Mount" Mono Sockets. |
+| **Potentiometers** (16mm) | **4** | **20+** | **B100K Linear**. Solder lugs are easier for air-wiring. |
+| **Knobs** (To fit 16mm Pots) | **4** | **20+** | Ensure shaft size matches Pot (usually 6mm Round or 6.35mm). |
+| **Tactile Buttons** | **2** | **10** | Standard 6x6mm or Panel Mount variants. |
+| **Power Header (PSU)** | **1** | **1** | **16-pin Male Header** (Boxed). Solder to PSU board. |
+| **Power Header (Modules)** | **4** | **12** | **10-pin Male Header**. Solder to Module board. |
+| **Ribbon Cable / Wire** | **1 spool** | **Multi-colour** | For linking Interface Board <-> Logic Board. |
+| **SPST Switch** | **1** | **1** | For PSU (Panel Mount Toggle). |
 | **DC Barrel Jack** | **1** | **1** | Panel Mount (2.1mm). |
 
 #### 1a. Tools & Equipment (Essential for Stage 1)
@@ -119,15 +118,18 @@ This plan organizes the build into two stages.
 
 ## Sourcing Recommendations (UK)
 
-1.  **Thonk (Brighton)**:
-    *   *Buy*: Jacks (Thonkiconn), Pots (Alpha 9mm), Power Cables, Knobs.
-    *   *Why*: Best quality, specialized for Audio/Eurorack.
+1.  **CPC Farnell (UK)**:
+    *   **Recommended For**: EVERYTHING (if possible).
+    *   *Why*: Professional industrial supplier, huge range, reliable.
+    *   *Search Tips*:
+        *   **Pots**: Search "Potentiometer Rotary Linear 100k 16mm" (Look for TT Electronics / ALPS).
+        *   **Knobs**: Search "Knob 6mm shaft" (Generic push-fit or set screw).
+        *   **Jacks**: Search "3.5mm Mono Chassis Socket" (Look for Lumberg or Pro Signal).
+        *   **Switches**: Search "Toggle Switch SPST" or "Tactile Switch 6x6mm".
+        *   **Components**: Resistors, Caps, Chips (TI/ST brands).
+    *   *Note*: Minimum order for free shipping is usually ~£20.
 
-2.  **Bitsbox (Online)**:
-    *   *Buy*: Resistors, Caps, Diodes, TL072/CD40xx Chips, Stripboard.
-    *   *Why*: Excellent prices for hobbyist quantities, flat shipping.
-
-3.  **Amazon / eBay / Pimoroni**:
+2.  **Amazon / eBay / Pimoroni**:
     *   *Buy*: Raspberry Pi Picos, Arduino Nano.
     *   *Buy*: 12V **AC** Wall Wart (Search "12V AC Power Supply 1000mA").
 

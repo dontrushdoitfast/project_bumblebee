@@ -3,15 +3,22 @@
 ## Bill of Materials
 *   **Microcontroller**: **1x** Arduino Nano (or Uno/Pro Mini). **(Plus 2x 15-pin Female Headers for socketing)**.
     *   *Clone Note*: Ensure it uses the CH340 driver if applicable.
-*   **Jacks**: **3x** Thonkiconn PJ-301M-12 (Trig In, Out A, Out B).
-*   **Potentiometer**: **1x** B10k or B100k Linear.
-*   **Button**: **1x** Tactile Switch.
+*   **Jacks**: **3x** 3.5mm Mono (Panel Mount).
+*   **Potentiometer**: **1x** B10k or B100k Linear (16mm Panel Mount).
+*   **Button**: **1x** Tactile Switch (Panel Mount preferred, or PCB mounted behind panel).
+*   **Wiring**: Ribbon cable or stranded wire to connect Panel components to Logic Board.
 *   **Resistors**:
     *   **1x** 100k (Input Protection).
     *   **2x** 1k (Output Output Protection).
 *   **Power**:
     *   **1x** 10-pin Male Power Header.
     *   **1x** L7805 CV (5V Regulator) + 10uF Cap. *(Optional: Can use Arduino Onboard VIN for 12V, but L7805 is safer/cooler).*
+
+### Construction Note: Split Board
+This module works best as two parts:
+1.  **Panel**: Holds Jacks, Pot, and Button.
+2.  **Logic Board**: Holds Arduino, Resistors, Power Regulator.
+*Connect them with flying wires.*
 
 ## Wiring Diagram
 

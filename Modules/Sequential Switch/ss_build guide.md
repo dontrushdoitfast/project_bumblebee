@@ -15,7 +15,7 @@ Note: we want 2 of these. So double the parts below.
     *   **1x** CD4017BE (Decade Counter). **(Plus 16-pin DIL Socket)**.
     *   **1x** CD4051BE (8-Channel Analog Mux/Demux). **(Plus 16-pin DIL Socket)**.
 *   **Jacks**:
-    *   **7x** Thonkiconn PJ-301M-12 (Clock, Reset, Common, 4x Steps).
+    *   **7x** 3.5mm Mono Jacks (Panel Mount).
 *   **LEDs**:
     *   **4x** 3mm LEDs (Color of choice).
     *   **4x** 1k Resistors (Current limiting).

@@ -14,6 +14,7 @@ The design uses a **Linear** topology with L7812 (Positive) and L7912 (Negative)
 5.  **Interface**: 
     *   **Front Panel**: Power Switch, LED Indicators (+12V/-12V), and Barrel Jack Input.
     *   **Rear**: Standard 10-pin Eurorack bus board connection.
+6.  **Compatibility**: Needs to work with genuine Eurorack modules, like the Behringer CM1A.
 
 ### Panel Layout / Interface
 *   **Width**: 4HP (Dedicated Module)

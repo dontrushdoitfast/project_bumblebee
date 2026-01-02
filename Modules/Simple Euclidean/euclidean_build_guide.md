@@ -6,9 +6,9 @@
 | Component | Quantity | Purpose | Notes |
 | :--- | :---: | :--- | :--- |
 | **Raspberry Pi Pico** | 1 | Brains | Standard header installation. **Use 2x 20-pin Female Headers**. |
-| **3.5mm Mono Jack** | 3 | Input, Out A, Out B | Thonkiconn / PJ-301M. |
-| **Potentiometer** | 1 | Density | B100K 9mm Vertical (Linear). |
-| **Tactile Button** | 1 | Reset / Tap | 6x6mm standard. |
+| **3.5mm Mono Jack** | 3 | Input, Out A, Out B | Panel Mount / Chassis Socket. |
+| **Potentiometer** | 1 | Density | B100K Linear (16mm). |
+| **Tactile Button** | 1 | Reset / Tap | Panel mount preferred. |
 | **Resistor 100kΩ** | 1 | Input Protection | |
 | **Resistor 1kΩ** | 2 | Output Protection | |
 | **Diode 1N5817** | 1 | Input Voltage Clamp | Schottky. |

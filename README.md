@@ -12,6 +12,7 @@ This is what the modules we create will be primarily used with.
 
 * Behringer 2600 (Grey Meanie)
 * Behringer Proton
+* Behringer CM1A
 
 **Secondary Equipment**
 
@@ -62,6 +63,7 @@ To ensure compatibility with the Behringer 2600, Proton, and standard Eurorack g
     *   **PSU Output**: **16-pin Header** (Standard Eurorack Bus).
     *   **Module Input**: **10-pin Header** (Standard Module Connection).
     *   *5V Rail Policy*: This custom PSU provides +/-12V only. It does **not** provide a 5V rail. Modules requiring 5V must generate it locally (e.g., via L7805). This matches modern Eurorack standards where many modules regulate their own digital power.
+    *   *Note*: Cabling and power does need to work with genuine Eurorack modules, like the Behringer CM1A.
 *   **Size**: We do not have a limitation on size so will aim for 15cm high modules and a simple metric width (perhaps multiples of 5cm). Real eurorack modules can have a 3d printed mounting plate.
 
 ## Phase 1
