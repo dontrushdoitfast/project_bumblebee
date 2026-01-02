@@ -27,17 +27,22 @@ This plan organizes the build into two stages.
 
 #### 1. Specialized Parts (Sourcing: Thonk / Synthcube)
 | Component | Quantity | Notes | Est. Cost |
-| :--- | :--- | :--- | :--- |
-| **3.5mm Jacks** (PJ-301M-12) | **50 - 100** | **SMART BUY**: You need ~70 total. Buying 50+ is cheaper per unit. | £18 - £35 |
-| **Potentiometers** (B100k) | **25 - 30** | **SMART BUY**: You need ~30 total. Buy a bulk pack now. | ~£25.00 |
-| **Knobs** (To fit Pots) | **4** | Buy as needed (Expensive to bulk buy if style preference changes). | £3.00 |
-| **Tactile Buttons** | **2** | 1(ABG) + 1(Euc) | £0.50 |
-| **Power Header** (10-pin) | **10** | **SMART BUY**: Buy a pack of 10 now. | £2.50 |
-| **Power Cable** (10-to-10) | **5** | | £12.50 |
-| **SPST Switch** | **1** | For PSU | £0.75 |
-| **DC Barrel Jack** | **1** | Panel Mount (2.1mm) | £1.00 |
+#### 1. Specialized Parts (Sourcing: Thonk / Synthcube)
+| Component | **Min Needed Now** | **Smart Buy** | Notes |
+| :--- | :---: | :---: | :--- |
+| **3.5mm Jacks** (PJ-301M-12) | **15** | **70** | 4(Atten) + 1(PSU) + 3(ABG) + 3(Euc) + 4(Switch). Buying 70 covers Stage 2. |
+| **Potentiometers** (B100k) | **4** | **30** | 2(Atten) + 1(ABG) + 1(Euc). 30 covers Stage 2. |
+| **Knobs** (To fit Pots) | **4** | **25** | Only 4 needed for Stage 1. |
+| **Tactile Buttons** | **2** | **10** | 1(ABG) + 1(Euc). |
+| **Power Header (PSU)** | **1** | **1** | **16-pin Male Header** (Boxed/Keyed). Solder to PSU board. |
+| **Power Header (Modules)** | **4** | **12** | **10-pin Male Header** (Unboxed/Break-away). Solder to Module boards. |
+| **Flying Bus Cable** | **1** | **1** | **Male Flying Bus Cable (Long - 60cm)**. Connects to PSU Header. |
+| **Module Power Cables** | **5** | **10** | **"10-16 Pin Power Cable"** (Short - 15cm). Connects modules to Bus. |
+| **SPST Switch** | **1** | **1** | For PSU. |
+| **DC Barrel Jack** | **1** | **1** | Panel Mount (2.1mm). |
 
 #### 1a. Tools & Equipment (Essential for Stage 1)
+*(Quantities are always 1 unless specified)*
 | Tool | Note | Est. Cost |
 | :--- | :--- | :--- |
 | **Soldering Iron** | Adjustable temperature recommended. | ~£20+ |
@@ -48,16 +53,18 @@ This plan organizes the build into two stages.
 | **Desoldering Pump** | For inevitable mistakes. | ~£5 |
 
 #### 2. Chips & Microcontrollers (Sourcing: Bitsbox / Mouser)
-| Component | Quantity | Notes | Est. Cost |
-| :--- | :--- | :--- | :--- |
-| **Raspberry Pi Pico** | **2** | 1 for Euclidean + **1 Spare**. **Add 2x 20-pin Female Headers**. | £8.00 |
-| **Arduino Nano** | *(Optional)* | If not using Uno. **Add 2x 15-pin Female Headers**. | *(£4.00)* |
-| **CD4017** | **2** | 1 for Switch + **1 Spare**. **Add 16-pin DIL Socket**. | £1.00 |
-| **CD4051** | **2** | 1 for Switch + **1 Spare**. **Add 16-pin DIL Socket**. | £1.00 |
-| **TL072** | **10** | **SMART BUY**: Standard Op-Amp. Used in Stage 2. **Add 8-pin DIL Sockets**. | £4.00 |
-| **L7812 + L7912** | **2 sets** | 1 for PSU + **1 Spare Set**. (No socket needed - Heatsink mount). | £2.00 |
+| Component | **Min Needed Now** | **Smart Buy** | Notes |
+| :--- | :---: | :---: | :--- |
+| **Raspberry Pi Pico** | **1** | **2** | 1 for Euclidean. Smart Buy adds 1 Spare. |
+| **Arduino Nano** | **1** | **1** | For Bernoulli Gate. |
+| **CD4017** | **1** | **2** | 1 for Switch. Smart Buy adds 1 Spare. |
+| **CD4051** | **1** | **2** | 1 for Switch. Smart Buy adds 1 Spare. |
+| **TL072** | **0** | **10** | None needed for Stage 1! Used in Stage 2. |
+| **L7812 + L7912** | **1 set** | **2 sets** | 1 for PSU. Smart Buy adds Spare Set. |
+| **IC Sockets** (DIP-16) | **2** | **10** | For CD4017/CD4051. |
+| **Pico/Nano Headers** | **1 set** | **10 sets** | 20-pin (Pico) + 15-pin (Nano) Female Headers. |
 
-#### 3. General Components (Sourcing: Bitsbox / Tayda)
+#### 3. General Components (Sourcing: Bitsbox)
 *   **Resistors** (**SMART BUY** - Buy Packs of 100):
     *   100k (Input Modulation)
     *   1k (Output Protection)

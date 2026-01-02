@@ -12,7 +12,7 @@
 | **Resistor 100kΩ** | 1 | Input Protection | |
 | **Resistor 1kΩ** | 2 | Output Protection | |
 | **Diode 1N5817** | 1 | Input Voltage Clamp | Schottky. |
-| **10-pin Power Header** | 1 | Power Input | Standard IDC. |
+| **10-pin Power Header** | 1 | Power Input | Male, Break-away. |
 | **10uF Capacitor** | 1 | Power Filtering | |
 
 ## Wiring Logic

@@ -58,9 +58,11 @@ To ensure compatibility with the Behringer 2600, Proton, and standard Eurorack g
     *   **CV (Bipolar)**: +/- 5V (LFOs, etc.).
     *   **CV (Unipolar)**: 0V to +10V (Envelopes) or 0V to +5V (Pitch/Digital CV).
     *   **Triggers/Gates**: 0V (OFF) to +5V (ON). *Note: The Pico requires buffering to step up 3.3V signals to 5V.*
-*   **Power Connectivity**: **10-pin Eurorack power headers** ONLY.
-    *   *Note*: We do not use the 5V rail from the bus board. Each module generates its own 5V/3.3V from the +12V rail if needed.
-*   **HP Width**: Integers of 2HP (e.g., 4HP, 6HP, etc.) for easy fitting.
+*   **Power Connectivity**:
+    *   **PSU Output**: **16-pin Header** (Standard Eurorack Bus).
+    *   **Module Input**: **10-pin Header** (Standard Module Connection).
+    *   *5V Rail Policy*: This custom PSU provides +/-12V only. It does **not** provide a 5V rail. Modules requiring 5V must generate it locally (e.g., via L7805). This matches modern Eurorack standards where many modules regulate their own digital power.
+*   **Size**: We do not have a limitation on size so will aim for 15cm high modules and a simple metric width (perhaps multiples of 5cm). Real eurorack modules can have a 3d printed mounting plate.
 
 ## Phase 1
 
