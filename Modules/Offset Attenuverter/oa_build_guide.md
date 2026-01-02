@@ -13,20 +13,17 @@ This build creates a simple but useful op-amp circuit. It mixes an input signal 
 **Note**: We want 2 of these, so double it.
 
 *   **1x** Stripboard (Large enough for TL074 layout).
-*   **1x** **TL074** Quad Op-Amp (DIP-14).
-*   **1x** **DIP-14 Socket**.
-*   **4x** B100K Potentiometers (Linear).
-*   **4x** Knobs (Davies 1900 Clone).
-*   **Jacks**:
-    *   **4x** Thonkiconn PJ-301M-12.
+*   **1x** TL074 (Quad Op-Amp) + 14-pin Socket.
+*   **4x** 3.5mm Mono Jacks (Panel Mount).
+*   **4x** 100k Linear Potentiometers (16mm Panel Mount).
+    *   *Note: Center-detent pots are nice for Attenuverters/Offsets but standard linear works fine.*
+*   **4x** Knobs (6mm shaft).
+*   **2x** Bipolar LEDs (Red/Green 3mm or 5mm).
+*   **1x** 10-pin Male Power Header.
+*   **Capacitors**: 2x 10uF (Power), 2x 100nF (Bypass).
 *   **Resistors (1/4W Metal Film)**:
     *   **6x** 100k (3 per channel: Input buffer, Summer in, Feedback).
     *   **4x** 1k (Output protection, LED current).
-*   **Capacitors**:
-    *   **2x** 100nF Ceramic.
-    *   **2x** 10uF Electrolytic.
-*   **Indicators**:
-    *   **2x** Bipolar LEDs (One per channel).
 *   **Power**:
     *   **1x** 10-pin Eurorack Power Header.
 

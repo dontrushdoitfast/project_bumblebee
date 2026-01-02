@@ -19,6 +19,6 @@ It spreads a specific number of "Hits" (beats) as evenly as possible across a 16
 *   **Visual Feedback**: Pico LED flashes on hits.
 
 ## Technical Details
-*   **Width**: 4HP / 6HP.
+*   **Width**: Variable (Panel Mount components allow flexible spacing).
 *   **Logic**: 3.3V Outputs (Safe for 5V inputs).
-*   **Power**: +12V (Regulated to 5V/3.3V).
+*   **Power**: +12V via **10-pin Header** (Regulated to 5V/3.3V).

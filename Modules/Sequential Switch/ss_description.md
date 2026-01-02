@@ -17,7 +17,7 @@ The design is based on the **CD4017** Decade Counter (which does the counting) a
     *   **Inputs**: Clock, Reset.
     *   **I/O**: Common I/O Jack, 4x Channel I/O Jacks.
     *   **Feedback**: LED per step to show active channel.
-5.  **Power**: StandardEurorack +/-12V.
+5.  **Power**: Standard Eurorack +/-12V via **10-pin Header**.
 
 ### Panel Layout / Interface
 *   **Width**: 4HP

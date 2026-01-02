@@ -14,14 +14,14 @@ This build guides you through creating a precision **Quantizer** using the Raspb
 *   **DACs**: **2x** MCP4725 Breakout Boards (I2C).
     *   *Mod Required*: On the second board, bridge the "A0" pad to change address to `0x61`.
 *   **User Input**:
-    *   **12x** Tactile Buttons (6x6mm).
-    *   **12x** PL9823 (or APA106) 5mm RGB LEDs (Through-hole NeoPixels).
-    *   **2x** Rotary Knobs + B100k Linear Pots.
-*   **Jacks**: **4x** Thonkiconn PJ-301M-12 (CV In A, CV In B, CV Out A, CV Out B).
+    *   **12x** Tactile Buttons (6x6mm) - *Note: Piano keys usually PCB mounted.*
+    *   **12x** PL9823 (or APA106) 5mm RGB LEDs.
+    *   **2x** Rotary Knobs + B100k Linear Pots (16mm).
+*   **Jacks**: **4x** 3.5mm Mono Jacks (Panel Mount).
 *   **Power**:
     *   **1x** L7805 CV (5V Regulator).
     *   **1x** 10uF Electrolytic Capacitor (Power bypass).
-    *   **1x** 10-pin Eurorack Power Header.
+    *   **1x** 10-pin Male Power Header.
 *   **Protection (Standard Bumblebee Prototcols)**:
     *   **Inputs (x2)**: **100k** Series Resistor + **1N5817** Schottky Diode (Clamping to 3.3V).
     *   **Outputs (x2)**: **1k** Series Resistor.

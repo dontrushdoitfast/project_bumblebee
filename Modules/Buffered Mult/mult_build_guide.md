@@ -12,7 +12,8 @@
 | **Capacitors** | | | |
 | Bypass | 100nF | 2 | Power rail noise filtering |
 | **Mechanical** | | | |
-| Jacks | Thonkiconn | 4 | 1 In, 3 Out |
+| Jacks | 3.5mm Mono | 4 | Panel Mount / Chassis Socket |
+| Power Header | 10-pin Male | 1 | For Eurorack power connection |
 
 ## Circuit Layout
 *   **Input Jack** -> Tip connected to TL074 Pins 3, 5, 10 (Non-Inverting Inputs).

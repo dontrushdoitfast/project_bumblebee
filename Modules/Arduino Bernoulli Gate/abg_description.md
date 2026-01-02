@@ -30,4 +30,4 @@ It is perfect for creating evolving Hi-Hat patterns, randomizing melody streams 
 ## Specifications
 *   **Logic Level**: 5V Output.
 *   **Trigger Length**: 10ms (Fixed).
-*   **Power**: +12V (Via VIN) or +5V (Via 5V pin). *Recommended: Regulated +5V Source logic.*
+*   **Power**: +12V via **10-pin Power Header**. (Regulated to 5V locally).

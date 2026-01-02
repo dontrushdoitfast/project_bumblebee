@@ -13,8 +13,8 @@
 | **Capacitors** | | | |
 | Bypass | 100nF | 2 | Near power pins |
 | **Mechanical** | | | |
-| Jacks | Thonkiconn | 6 | 2 In, 2 Out, 2 CV |
-| Pots | B100k | 4 | 2 Attenuators, 2 Offset |
+| Jacks | 3.5mm Panel Mount | 6 | 2 In, 2 Out, 2 CV |
+| Pots | B100k (16mm) | 4 | 2 Attenuators, 2 Offset |
 
 ## Circuit Notes
 *   **LM13700 Logic**: The LM13700 is a "Current Controlled" amplifier. We use resistors to convert our Voltage Inputs into Current.

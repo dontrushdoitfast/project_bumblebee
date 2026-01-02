@@ -14,19 +14,29 @@ This is an active module build, meaning it requires power and uses an Integrated
 
 Note: we want 2 of these, so double it.
 
-*   **1x** **TL072** Dual Op-Amp (DIP-8 package).
-*   **1x** **DIP-8 Socket** (Optional but recommended to protect the IC).
-*   **4x** **Thonkiconn PJ-301M-12** (3.5mm Mono Jacks).
-*   **3x** **Alpha 9mm Vertical Potentiometer, B100K** (Linear).
-*   **3x** **Knobs** (Davies 1900 Clone).
-*   **5x** **100k Resistors** (1/4W Metal Film).
-    *   3x for Inputs
-    *   1x for Feedback (Stage 1)
-    *   1x for Feedback (Stage 2)
-*   **1x** **1k Resistor** (Output protection).
-*   **2x** **100nF Ceramic Capacitors** (Power decoupling).
-*   **1x** **10-pin Eurorack Power Header** (Male IDC).
+*   **Chips**:
+    *   **1x** TL072 (Dual Op-Amp). **(Plus 8-pin DIL Socket)**.
+*   **Jacks**:
+    *   **4x** 3.5mm Mono Jacks (Panel Mount / Chassis Socket).
+*   **Controls**:
+    *   **3x** 100k Linear Potentiometers (16mm Panel Mount).
+    *   **3x** Knobs (to fit 6mm shaft).
+*   **Resistors**:
+    *   **5x** **100k Resistors** (1/4W Metal Film).
+        *   3x for Inputs
+        *   1x for Feedback (Stage 1)
+        *   1x for Feedback (Stage 2)
+    *   **1x** **1k Resistor** (Output protection).
+*   **Power**:
+    *   **1x** 10-pin Male Header.
+    *   **2x** 10uF Electrolytic Capacitors (Power filtering).
+    *   **2x** 100nF Ceramic Capacitors (Decoupling near chip).
 *   **Stripboard** (Small piece, approx 10x10 holes).
+
+### Construction Note: Split Board
+1.  **Panel Board**: Mount Pots and Jacks to the faceplate.
+2.  **Logic Board**: Solder ICs, Resistors, and Power Header to stripboard.
+3.  **Link**: Connect Panel components to Logic board using flying wires.
 
 ### Schematic / Circuit Logic
 The circuit has two stages using the two halves of the TL072:

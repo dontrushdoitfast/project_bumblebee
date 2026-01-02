@@ -26,7 +26,7 @@ The **Passive Attenuator** is a dual-channel utility module used to reduce the a
 
 ### Technical Specifications
 *   **Power Consumption**: 0mA (Passive) - No power header required.
-*   **Potentiometer Used**: B50k or B100k Linear (9mm Alpha vertical or similar).
+*   **Potentiometer Used**: B50k or B100k Linear (16mm Panel Mount).
 *   **Voltage Range**: +/- 12V safe (or whatever the jacks can handle).
 *   **Channels**: 2 Independent Channels.
 

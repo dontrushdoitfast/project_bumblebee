@@ -10,19 +10,15 @@ This build combines an Op-Amp (Analog) with the PT2399 (Digital) and requires an
 *   **Wire Strippers**
 
 ### Bill Of Materials
-*   **ICs**:
-    *   **1x** PT2399 Echo Chip (DIP-16).
-    *   **1x** TL072 Dual Op-Amp (DIP-8).
-*   **Regulators**:
-    *   **1x** L78L05 (TO-92 package) - Small 5V regulator.
-*   **Sockets**:
-    *   **1x** DIP-16 Socket.
-    *   **1x** DIP-8 Socket.
-*   **Potentiometers**:
-    *   **3x** B50K or B100K (Linear) - Time, Feedback, Mix.
-    *   **3x** Knobs.
-*   **Jacks**:
-    *   **2x** Thonkiconn PJ-301M-12.
+*   **Chips**:
+    *   **1x** PT2399 (Echo Processor) + 16-pin Socket.
+    *   **1x** TL072 (Op-Amp) + 8-pin Socket.
+    *   **1x** L78L05 (5V Regulator - TO-92 package).
+*   **Controls**:
+    *   **3x** B50k or B100k Pots (16mm Panel Mount).
+    *   **2x** 3.5mm Mono Jacks (Panel Mount).
+*   **Power**:
+    *   **1x** 10-pin Male Header.
 *   **Passives**:
     *   **Resistors**: 10k (x2), 15k (x1), 22k (x1), 1k (x1 output protection).
     *   **Capacitors**: 100nF Ceramic (x2), 47uF Electrolytic (x1), 2.2uF Electrolytic (x1).

@@ -14,16 +14,16 @@ This build features a "Modal" interface. You will be wiring up buttons and LEDs 
 *   **Screen**: **1x** LCD 2004 (20x4) with I2C Backpack.
 *   **User Input**:
     *   **1x** Rotary Encoder (with Push Switch).
-    *   **3x** B10k or B100k Potentiometers (Linear).
-    *   **2x** Momentary Push Buttons (Tactile or Panel mount).
+    *   **3x** B10k or B100k Potentiometers (16mm Linear).
+    *   **2x** Momentary Push Buttons (Panel mount).
     *   **3x** Knobs for Pots.
 *   **Indicators**:
     *   **6x** 3mm LEDs (3x Green for Channels, 3x Red for Options).
-*   **Jacks**: **5x** Thonkiconn PJ-301M-12.
+*   **Jacks**: **5x** 3.5mm Mono Jacks (Panel Mount).
 *   **Power**:
     *   **1x** L7805 CV (5V Regulator).
     *   **1x** 10uF Electrolytic Capacitor (Power bypass).
-    *   **1x** 10-pin Eurorack Power Header.
+    *   **1x** 10-pin Male Power Header.
 *   **Protection (Standard Bumblebee Protocols)**:
     *   **Input (Clock In)**: **1x 100k** Series Resistor + **1N5817** Schottky Diode (Clamping to 3.3V).
     *   **Outputs (x4)**: **1k** Series Resistor (After Buffer).

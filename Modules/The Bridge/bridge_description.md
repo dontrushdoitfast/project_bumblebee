@@ -26,4 +26,5 @@ Instead of relying on the Behringer's internal mono/duo logic, this module provi
 *   **Core**: Raspberry Pi Pico (RP2040).
 *   **DAC**: MCP4822 (Dual channel, 12-bit, SPI).
     *   *Note*: The MCP4822 has an internal reference (2.048V). We use an Op-Amp with gain (x2 approx) to boost this to 0-5V standard.
+*   **Power**: Standard +/-12V via **10-pin Header**. (5V/3.3V generated onboard).
 *   **Gate Outputs**: Direct GPIO via 1k protection resistors.
