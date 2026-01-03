@@ -1,114 +1,134 @@
-# Power Supply Build Guide
+# Dual Rail Power Supply Build Guide
 
-### Overview
-**WARNING: POWER ELECTRONICS.** While 12V is generally safe to touch, shorts can cause fires or explode components. Double-check all polarities (especially capacitors) before powering on. 
+## Overview
+This module is the heart of your system. It takes 12V AC from a wall wart and converts it into the stable **+12V** and **-12V** DC power that Eurorack modules need.
 
-This build uses a **Stripboard** (Veroboard) converting standard schematic logic into linear tracks. You will need to "cut" traces to break connections.
+> [!WARNING]
+> **POLARITY MATTERS!**
+> Unlike the passive attenuator, this circuit has specific orientations.
+> - **Capacitors** have a stripe (-) side.
+> - **Diodes** have a stripe (Cathode).
+> - **Regulators** must not be swapped (7812 is NOT the same as 7912).
+> **Double-check every step.** A mistake here can damage other modules.
 
-### Tools needed
-*   **Soldering Iron** & Solder
-*   **Multimeter** (ESSENTIAL)
-*   **Track Cutter** (or a drill bit) to break stripboard tracks.
-*   **Wire Strippers**
-*   **Desoldering Pump** (Mistakes happen).
+---
 
-### Bill Of Materials
-*   **1x** Stripboard (approx 20 rows x 20 columns minimum).
-*   **1x** 12V AC Wall Wart (2000mA / 24VA). **MUST BE AC OUTPUT.**
-*   **1x** DC Barrel Jack (Panel Mount) - 2.1mm / 2.5mm "Universal" fit recommended.
-*   **1x** SPST Switch (Panel Mount). *Note: Illuminated Rocker Switch (12V) is a great alternative.*
-*   **Power Components**:
-    *   **1x** L7812CV (+12V Regulator, TO-220).
-    *   **1x** L7912CV (-12V Regulator, TO-220). *Note: Different pinout to 7812!*
-    *   **2x** 2200uF 25V Electrolytic Capacitors.
-    *   **2x** 10uF 25V Electrolytic Capacitors (Decoupling).
-    *   **2x** 1N4004 Diodes (Rectifiers).
-*   **Indicators**:
-    *   **2x** 5mm LEDs (Green/Red - Diffused recommended).
-    *   **2x** 1k Resistors (Current limiting for LEDs).
-*   **Connection**:
-    *   1x **16-pin Male Boxed/Shrouded Header**. This provides the 10-pin power connection plus 5V and Gate/CV bus access for expansions. **Key for reverse-polarity protection.**
-    *   Pin headers or terminal blocks for wiring panel components.
+## 1. Bill of Materials (BOM)
 
-### Schematic / Wiring Diagram
-**Logic**:
-1.  **AC Input** enters via Jack -> One leg goes to Switch -> Circuit.
-2.  **Rectification**: Two diodes split the AC wave. 
-    *   D1 (Forward) creates positive raw voltage.
-    *   D2 (Reverse) creates negative raw voltage.
-3.  **Filtering**: Large caps (2200uF) smooth the raw pulses into DC ripple.
-4.  **Regulation**: 
-    *   L7812 keeps positive rail at exactly +12V.
-    *   L7912 keeps negative rail at exactly -12V.
+| Component | Value/Part | Quantity | Notes |
+| :--- | :--- | :--- | :--- |
+| **P1** | 12V AC Wall Wart | 1 | **Must be AC Output**, not DC! (Not included in component bags) |
+| **J1** | 2.1mm DC Socket | 1 | Pro Signal PS11599 (Panel Mount) |
+| **D1, D2** | 1N4001 | 2 | Rectifier Diodes (Black with silver band) |
+| **C1, C3** | 2200µF 25V | 2 | Large Electrolytic. **Polarized!** |
+| **C2, C4** | 100nF (0.1µF) | 2 | Small Ceramic (Yellow/Blue blobs). Non-polarized. |
+| **U1** | L7812CV | 1 | +12V Regulator (Positive) |
+| **U2** | L7912ACV | 1 | -12V Regulator (Negative) |
+| **J2** | Pin Header | 1 | 3-pin Male Header (Output) |
+| **Board** | Stripboard | 1 | Cut to size (approx 15x15 holes is plenty) |
 
-**Circuit Diagram**:
+---
+
+## 2. Stripboard Layout
+We will use a logical layout where the Regulators sit in 3 adjacent rows.
+*   **Top Block (Rows 2-4):** Positive Rail (+12V)
+*   **Bottom Block (Rows 6-8):** Negative Rail (-12V)
+
+### Graphical ASCII Layout
+*(View from Top - Components Side)*
+
+```ascii
+         1   2   3   4   5   6   7   8   9   10  11  12
+       +---+---+---+---+---+---+---+---+---+---+---+---+
+Row 1  | (Unused / Spacing)                            |
+       +---+---+---+---+---+---+---+---+---+---+---+---+
+Row 2  | AC1---[ D1 >| ]---[ C1+ ]---[ 7812 IN ]-------|
+       +---+---+---+---+---|-----|---|---------|---+---+
+Row 3  | AC2---(GND)-------[ C1- ]---[ 7812 GD ]-------|-----> GND
+       +---+---+---+---+---|-----|---|---------|---+---+
+Row 4  |                   [ C2  ]   [ 7812 OT ]-------|-----> +12V
+       +---+---+---+---+---+---+---+---|---+---|---+---+
+Row 5  | (Wire Link connecting Row 3 to Row 6)         |
+       +---+---+---+---+---+---+---+---+---+---+---+---+
+Row 6  |                   [ C4  ]   [ 7912 GD ]-------|
+       +---+---+---+---+---|-----|---|---------|---+---+
+Row 7  | AC1---[ |< D2 ]---[ C3- ]---[ 7912 IN ]-------|
+       +---+---+---+---+---|-----|---|---------|---+---+
+Row 8  |                   [     ]   [ 7912 OT ]-------|-----> -12V
+       +---+---+---+---+---+---+---+---+---+---+---+---+
 ```
-                          ┌────────────────┐
-   [AC JACK]──►[SWITCH]───┤                │
-                          │    D1 (1N4004) ├──►[C1 2200uF]──►┌─────────┐
-                          │        │       │                 │  L7812  ├──► +12V
-                          │       ─┴─      │                 │ IN  OUT │
-             ┌────────────┤                │                 └────┬────┘
-             │            │    D2 (1N4004) ├──►[C2 2200uF]──►┌────┴────┐
-             │            │        │       │   (reversed)    │  L7912  ├──► -12V
-             │            │       ─▼─      │                 │ IN  OUT │
-             │            └────────────────┘                 └────┬────┘
-             │                                                    │
-            GND ◄─────────────────────────────────────────────────┘
-                                  (Common Ground)
-```
 
-**Stripboard Layout**:
-![Stripboard Layout](images/psu_layout.png)
-*Follow this layout carefully. Ensure cuts under the ICs are clean and complete.*
+### Key Connections:
+1.  **AC1 (Live):**
+    *   Connects to **Row 2** (D1 Anode).
+    *   ALSO connects to **Row 7** (D2 Cathode). *Use a wire jumper to link Row 2 and Row 7 at Column 2.*
+2.  **AC2 (Neutral/Ground):**
+    *   Connects to **Row 3** (Ground).
+    *   *Note:* Row 3 must be linked to Row 6 to share ground with the negative regulator.
+3.  **Polarity Checks:**
+    *   **D1:** Band (Cathode) points RIGHT (towards regulators).
+    *   **D2:** Band (Cathode) points LEFT (towards AC input).
+    *   **C1 (Top Cap):** Positive leg in Row 2, Negative leg in Row 3.
+    *   **C3 (Btm Cap):** Positive leg in Row 6 (GND), Negative leg in Row 7 (-V). **Careful here!** The capacitor's stripe (-) goes to the -12V rail (Row 7).
 
-### Step By Step guide
+---
 
-#### Phase 1: Breadboard Prototyping
-**CRITICAL**: Build this on a breadboard first to verify your Wall Wart is actually AC and your regulators work.
-1.  Connect Wall Wart to Jack. Measure output of Jack with Multimeter (AC Volts). Should be ~12-14V AC.
-2.  Build just the Positive side: Diode -> Capacitor -> Input of 7812.
-3.  Measure 7812 Output. Should be steady +12V DC.
-4.  Build the Negative side: Reversed Diode -> Capacitor (Reversed!) -> Input of 7912.
-5.  Measure 7912 Output. Should be steady -12V DC.
+## 3. Step-by-Step Assembly
 
-#### Phase 2: Stripboard Assembly
-1.  **Prepare Board**: Cut the board to size.
-2.  **Cut Tracks**: Use the track cutter to break strips under the ICs (Regulators) so input/output/ground don't short.
-3.  **Links**: Solder jumper wires FIRST (e.g., connecting Grounds).
-4.  **Components**: Solder minimal height parts first (Diodes, Resistors) -> then Headers -> then Capacitors -> then Regulators.
-5.  **Heatsinks**: Bolt heatsinks to regulators if using them. Ensure they don't touch each other!
+### Step 1: Component Placement
+1.  **Diodes:**
+    *   **D1 (Row 2):** Input side. Band facing Right.
+    *   **D2 (Row 7):** Input side. Band facing Left.
+2.  **Links:**
+    *   Solder a wire link between **Row 3** and **Row 6** (Ground Link).
+    *   Solder a wire link between **Row 2** (Col 1) and **Row 7** (Col 1) to share the AC1 input.
+3.  **Capacitors:**
+    *   **C1 (2200uF):** + in Row 2, - in Row 3.
+    *   **C3 (2200uF):** + in Row 6, - in Row 7. *(Recall: Positive goes to Ground for the negative rail cap).*
+    *   **C2 (100nF):** Across Row 3 and 4? *Correction:* C2 is output cap for 7812. Put it between Output (Row 4) and Gnd (Row 3).
+    *   **C4 (100nF):** Output cap for 7912. Between Output (Row 8) and Gnd (Row 6).
+4.  **Regulators (The Big Ones):**
+    *   **7812:** Insert into Rows 2, 3, 4. (In, Gnd, Out).
+    *   **7912:** Insert into Rows 6, 7, 8. (Gnd, In, Out).
+    *   *Double check names!* 7812 is top. 7912 is bottom.
 
-#### Phase 3: Panel Wiring
-1.  Mount Jack, Switch, and LEDs to 3D printed faceplate.
-2.  Wire Jack -> Switch -> Stripboard AC Input.
-3.  Wire Stripboard +12V/-12V/GND -> LEDs (via resistors).
+### Step 2: Wiring
+1.  **AC Input:** Solder jack wires to **Row 2** and **Row 3**. (Since Row 2 is linked to Row 7, AC1 goes to both diodes).
+2.  **Output:** Solder wires or header to:
+    *   **+12V:** Row 4
+    *   **GND:** Row 3 (or 6)
+    *   **-12V:** Row 8
 
-### Troubleshooting
-*   **Hum/Buzz**: Capacitor values too low or bad solder joint on filter caps.
-*   **Regulator Hot instantly**: SHORT CIRCUIT. Unplug immediately. Check track cuts.
-*   **Output is 0V**: Check fuse (if installed) or Switch wiring.
-*   **Negative Rail is Positive**: Capacitor polarity reversed or Diode backward.
+---
 
-### Testing plan (Enhanced Safety)
-1.  **Visual Inspection**: 
-    *   Check all polarized capacitors. **If backwards, they will explode.**
-    *   Check Diode orientation (Stripes must match layout).
-    *   Check IC orientation (L7812 vs L7912 are NOT interchangeable).
-    *   **Track Inspection**: Hold the board up to a light. Ensure no copper debris is bridging tracks, especially where you made cuts.
-2.  **Continuity Check (Power OFF)**: 
-    *   Set Multimeter to "Beep" or "Ohms".
-    *   Check **Input AC to GND**: Should be Open (No beep).
-    *   Check **+12V Output to GND**: Should show charging capacitor (brief beep then silence/climbing resistance). If steady ZERO ohms, you have a short.
-    *   Check **-12V Output to GND**: Same as above.
-    *   Check **+12V to -12V**: Should be Open.
-3.  **Voltage Check (No Load)**: 
-    *   Power on the AC Wall Wart (Switch OFF first).
-    *   Flip Switch ON. LEDs should light up.
-    *   **Measure +12V Rail**: Red Probe on +12, Black on GND. Target: **+11.8V to +12.2V**.
-    *   **Measure -12V Rail**: Red Probe on -12, Black on GND. Target: **-11.8V to -12.2V**.
-    *   *If voltages are wrong (e.g. 18V or 0V), Turn OFF immediately.*
-4.  **Load Test (The "Smoke Test")**: 
-    *   Connect a 1k resistor between +12V and GND. Verify voltage stays stable.
-    *   Connect a 1k resistor between -12V and GND. Verify voltage stays stable.
-    *   Only if stable, connect a real module (e.g. Passive Attenuator or cheap test utility).
+## 4. Connections & Wiring
+
+### Input (J1 - Panel Mount Jack)
+1.  Solder two wires to the **AC Input Jack** (polarity doesn't matter for AC).
+2.  Twist these wires together to reduce noise.
+3.  Connect Wire 1 to **Diode Common Point** (Anode of D1, Cathode of D2).
+4.  Connect Wire 2 to **Common Ground** on the board.
+
+### Output (Header)
+1.  Solder a 3-pin header to the board.
+2.  Use jumper wires on the bottom (or top) to connect:
+    *   **Pin 1:** +12V Rail
+    *   **Pin 2:** Ground Rail
+    *   **Pin 3:** -12V Rail
+
+---
+
+## 5. Testing (Crucial!)
+
+1.  **Safety Check:** Inspect board. Ensure no solder bridges between strips. Ensure capacitors are correct way round (+ to +, - to -).
+    *   *Note:* On negative rail, Cap + goes to Ground, Cap - goes to -12V line. This looks "backwards" but is correct for negative voltage.
+2.  **Power Up (No Modules):**
+    *   Plug in your AC Wall Wart.
+    *   Turn on.
+3.  **Voltage Check:**
+    *   Red Probe on **+12V** pin, Black on **GND**. -> Should read **+11.8V to +12.2V**.
+    *   Red Probe on **-12V** pin, Black on **GND**. -> Should read **-11.8V to -12.2V**.
+    *   *Note:* If you see -0.5V or +18V, TURN OFF IMMEDIATELY. Check connections.
+
+---
+**Congratulations!** You have a Dual Rail Power Supply.

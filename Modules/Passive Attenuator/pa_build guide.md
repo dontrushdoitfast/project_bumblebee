@@ -1,79 +1,101 @@
-# Passive Attenuator Build Guide
+# Passive Attenuator: A Learning Build
 
-### Overview
-This is the simplest module in the system, making it perfect for the first build. You will wire two potentiometers and four jacks in a simple "voltage divider" configuration. No circuit board is required; we will use "point-to-point" wiring directly on the components.
+## Overview
+Welcome to your first build. While we *could* just tell you exactly which wire goes where, the goal of Project Bumblebee is for you to **understand** what you are building.
 
-### Tools needed
-*   **Soldering Iron** & Solder (Lead-free recommended)
-*   **Wire Strippers** & Cutters
-*   **Multimeter** (for continuity and resistance checks)
-*   **Pliers** (for tightening jack nuts)
-*   **3D Printer** (Creality K1 Max) & PLA/PETG filament
+This module is a **Passive Attenuator**. It uses a logic called a **Voltage Divider**.
 
-### Bill Of Materials
-*   **4x** **3.5mm Mono Jacks** (Panel Mount) - Generic CPC/Lumberg type.
-*   **2x** **100k Linear Potentiometers (16mm)** - High quality, solder-lug terminals.
-*   **2x** Knobs (To fit 6mm shaft)
-*   **Wire**: 24AWG or 26AWG stranded wire (various colors recommended for Signal vs Ground)
-*   **3D Printed Faceplate**: (STL to be generated)
+**Est. Time:** 45 Minutes
+**Difficulty:** Beginner (Educational)
 
-### Schematic / Wiring Diagram
-**Wiring Logic (Per Channel)**:
-1.  **Grounds**: Connect the Ground (Sleeve) pins of Input Jack, Output Jack, and Potentiometer Pin 1 together. *Note: You can bus all grounds together for simplicity.*
-2.  **Input Signal**: Connect Input Jack Tip -> Potentiometer Pin 3.
-3.  **Attenuated Signal**: Connect Potentiometer Pin 2 (Wiper) -> Output Jack Tip.
+---
 
-**Visual Representation**:
+## 1. The Theory: Voltage Dividers
+An attenuator isn't just a "volume knob." It is a circuit that takes an Input Voltage ($V_{in}$) and splits it across two resistances to create a smaller Output Voltage ($V_{out}$).
+
+We use a **Potentiometer** (Pot), which is essentially a variable resistor with a "Wiper" that slides along it.
+
+### The Schematic
+Engineers read schematics, not wiring lists. Here is the schematic for what you are building:
+
 ```
-      [In Tip] --------(Pin 3)
-                              |
-                            [Pot]-----(Pin 2)-----> [Out Tip]
-                              |
-      [Common GND] ----(Pin 1)
+      (Input Signal)
+           |
+       [ Pin 3 ]  <-- Top of Resistor
+           |
+           |   <----- [ Pin 2: Wiper ] ---------> (Output Signal)
+           |
+       [ Pin 1 ]  <-- Bottom of Resistor
+           |
+       (Ground / 0V)
 ```
-*Repeat exactly for Channel B.*
 
-### Step By Step guide
+**How it works:**
+*   **Knob CW (Full Volume):** The Wiper slides up to Pin 3. Output is connected directly to Input.
+*   **Knob CCW (0 Volume):** The Wiper slides down to Pin 1. Output is connected directly to Ground (Silence).
+*   **Knob Middle:** The Wiper is halfway. Half the voltage acts as "friction" (heat), and half goes to output.
 
-#### Phase 1: Breadboard Prototyping
-Before heating up the soldering iron, verify the circuit concept on a breadboard.
-1.  **Insert Potentiometer**: Place the B100K pot on the breadboard.
-2.  **Connect Input**: Patch a signal (e.g., LFO from Proton) to **Pin 3** (Left outer leg).
-3.  **Connect Output**: Patch **Pin 2** (Middle leg/Wiper) to your oscilloscope or mixer.
-4.  **Connect Ground**: Connect **Pin 1** (Right outer leg) to the common ground rail.
-5.  **Test**: Turn the knob. Ensure the signal fades from Max (CW) to Silent (CCW). If it works, proceed to Phase 2.
+---
 
-#### Phase 2: Final Assembly
-1.  **Print the Faceplate**: Slice the 4HP faceplate model in Orca Slicer. Print face-down for the best texture.
-2.  **Mount Components**:
-    *   Install the 2 potentiometers in the middle holes. Orient terminals facing INWARDS.
-    *   Install the 4 jacks. Ensure the ground tabs are accessible.
-    *   Tighten all nuts gently (plastic deforms easily).
-3.  **Prepare Grounds**:
-    *   Cut short lengths of wire to daisy-chain the ground lugs of all 4 jacks and the Pin 1 lug of both pots.
-    *   Solder this "ground bus" wire.
-4.  **Wire Channel A (Top)**:
-    *   Solder a wire from Top Input Jack (Tip) to Top Pot (Pin 3).
-    *   Solder a wire from Top Pot (Pin 2/Middle) to Upper-Middle Output Jack (Tip).
-5.  **Wire Channel B (Bottom)**:
-    *   Repeat the same connections for the bottom set of jacks and pot.
-6.  **Final Inspection**: Check for loose wire strands or solder bridges.
+## 2. The Practical Challenge
+
+### Challenge A: Identify your Nets
+In electronics, a "Net" is a group of points that are all connected together. Look at the schematic above. Can you see the 3 Nets?
+
+1.  **The Input Net:** Connects the **Jack Tip (In)** to the **Pot Input (Pin 3)**.
+2.  **The Output Net:** Connects the **Pot Wiper (Pin 2)** to the **Jack Tip (Out)**.
+3.  **The Ground Net:** Connects **Jack Sleeve (In)** AND **Jack Sleeve (Out)** AND **Pot Ground (Pin 1)**.
+
+### Challenge B: Identify your Pins
+Grab your **B100K Potentiometer**.
+*   Turn it over so the shaft points **away** from you.
+*   Identify Pins 1, 2, and 3.
+*   *Hint:* On standard pots (looking from the back), Pin 3 is usually on the LEFT, and Pin 1 is on the RIGHT. (This is often slightly confusing, which is why we verify later!)
+
+---
+
+## 3. The Build Guide (Answer Key)
+*Now that you understand the logic, here is the verified step-by-step guide to ensure your build is robust and reliable.*
+
+### BOM & Tools
+*   **Jacks:** Pro Signal PS11588
+*   **Pot:** 100k Linear (P160KNP)
+*   **Wire:** 22 AWG Solid Core
+
+### Step 1: Mechanical Assembly
+1.  Mount the Pot and Jacks to the panel.
+2.  **Pro Tip:** Rotate the jacks so the Ground Lugs face inwards. This makes connecting the "Ground Net" much easier.
+
+### Step 2: Wiring the "Ground Net"
+*Logic: We need a solid reference point for 0V.*
+1.  Take your **Solid Core Wire**.
+2.  Strip a long piece (or strip sections of it).
+3.  Solder it to **Input Jack Sleeve**.
+4.  Route it to **Pot Pin 1** (The Rightmost pin when looking from the back). Solder it.
+5.  Route it to **Output Jack Sleeve**. Solder it.
+    *   *Check:* Do you see how this single wire connects all 3 Ground points?
+
+### Step 3: Wiring the "Input Net"
+*Logic: The signal enters the resistor.*
+1.  Solder a wire from **Input Jack Tip**.
+2.  Connect it to **Pot Pin 3** (The Leftmost pin when looking from the back).
+
+### Step 4: Wiring the "Output Net"
+*Logic: The signal leaves via the wiper.*
+1.  Solder a wire from **Pot Pin 2** (The Middle pin).
+2.  Connect it to **Output Jack Tip**.
+
+---
+
+## 4. Verification (The "Smoke Test")
+Before plugging in modules, engineers double-check their logic with a Multimeter.
+
+1.  **Check Ground:** Measure resistance between Input Sleeve and Output Sleeve.
+    *   *Expectation:* **~0 Ω**. (If not, your Ground Net is broken).
+2.  **Check Function:** Measure resistance between Input Tip and Output Tip while turning the knob.
+    *   *Expectation:* Resistance should change from **~100kΩ** (at 0 volume) to **~0Ω** (at Max volume).
 
 ### Troubleshooting
-*   **No Signal**:
-    *   Check that the input signal is actually plugged into the **Input** jack (Top jack of the pair).
-    *   Check for "cold" solder joints on the jack lugs.
-*   **Reversed Action (Louder when turning Left)**:
-    *   You have wired the input to Pin 1 instead of Pin 3. Swap the two outer wires on the potentiometer.
-*   **Hum/Noise**:
-    *   Check that all ground sleeves are connected together. A missing ground connection causes buzz.
-
-
-### Testing plan
-1.  **Continuity**: Use a multimeter to verify that all Ground points (Jack sleeves, Pot Pin 1) are connected to each other.
-2.  **Isolation**: Verify there is NO connection between the Input Tip and Ground (unless Pot is turned).
-3.  **Resistance Check**:
-    *   Connect Multimeter to Input Tip and Output Tip.
-    *   Turn knob fully **CW**: Resistance should be near **0 ohms** (Direct connection).
-    *   Turn knob fully **CCW**: Resistance should be near **100k ohms** (Full resistance).
-4.  **Functional Test**: Patch audio/CV from the Proton into Input, and Output to your mixer. Verify the knob controls the volume smoothly from Silent to Max.
+*   **Volume works backwards?**
+    *   You likely swapped Pin 1 and Pin 3.
+    *   *Why?* Because looking from the Front vs Back reverses the orientation. Always double-check your perspective!
